@@ -31,7 +31,7 @@ class LoginController extends GetxController {
           title: 'Success',
           message: '${serviceResponse.message}',
         );
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/events');
       } else {
         showSnackBar(
           title: 'Error',
