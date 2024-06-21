@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/login/controller.dart';
@@ -33,17 +34,28 @@ class LoginPage extends GetView<LoginController> {
               child: SingleChildScrollView(
                 child: Stack(
                   children: [
-                    Image.asset(
-                      'assets/images/login-image.png',
+                    SvgPicture.asset(
+                      'assets/icons/background.svg',
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.contain,
                     ),
+                    Positioned(
+                      top: 35,
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                        child: SvgPicture.asset(
+                          'assets/icons/logo-white.svg',
+                        ),
+                      ),
+                    ),
                     const Positioned(
-                      top: 10,
-                      left: 35,
+                      top: 90,
+                      left: 0,
                       right: 0,
                       child: Text(
-                        'Login',
+                        textAlign: TextAlign.center,
+                        'Welcome to Tickey',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w800,
@@ -53,11 +65,12 @@ class LoginPage extends GetView<LoginController> {
                       ),
                     ),
                     const Positioned(
-                      top: 50,
-                      left: 35,
+                      top: 130,
+                      left: 0,
                       right: 0,
                       child: Text(
-                        'Your session ended, Login to make a payment',
+                        textAlign: TextAlign.center,
+                        'Login to handle admissions and make ticket sales',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -70,22 +83,21 @@ class LoginPage extends GetView<LoginController> {
                       padding: const EdgeInsets.all(25.0),
                       child: Column(
                         children: [
-                          const SizedBox(height: 400.0),
+                          const SizedBox(height: 250.0),
                           CustomTextInputField(
                             textInputType: TextInputType.phone,
-                            inputFieldName: "mobile_number",
-                            labelText: "Mobile Number",
+                            inputFieldName: "username",
+                            labelText: "Username",
                             handleOnChanged: (value) {
                               controller.phone.value = value;
                             },
                           ),
                           const SizedBox(height: 20.0),
                           CustomTextInputField(
-                            textInputType: TextInputType.number,
-                            maxLength: 5,
+                            textInputType: TextInputType.text,
                             obscureText: true,
-                            inputFieldName: "pin",
-                            labelText: "Pin",
+                            inputFieldName: "password",
+                            labelText: "Password",
                             handleOnChanged: (value) {
                               controller.pin.value = value;
                             },
@@ -106,7 +118,7 @@ class LoginPage extends GetView<LoginController> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const Text(
-                                'Don’t have an account?',
+                                'Unable to login?',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -118,7 +130,7 @@ class LoginPage extends GetView<LoginController> {
                               GestureDetector(
                                 onTap: () => Get.toNamed('/signup'),
                                 child: const Text(
-                                  'Sign Up!',
+                                  'Contact Support',
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
@@ -132,7 +144,7 @@ class LoginPage extends GetView<LoginController> {
                           const SizedBox(height: 10.0),
                           const Text(
                             textAlign: TextAlign.center,
-                            'Read our Privacy Policy and Terms and \n Conditions',
+                            'Powered by BGS',
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,

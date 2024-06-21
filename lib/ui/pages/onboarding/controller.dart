@@ -43,15 +43,15 @@ class UnbordingContent {
 List<UnbordingContent> contents = [
   UnbordingContent(
     image: 'assets/images/login-image.png',
-    discription: "Its simple,\n Just Scan the QR code",
+    discription: "Its simple, Scan the QR code \n to validate a Ticket",
   ),
   UnbordingContent(
     image: 'assets/images/login-image.png',
     discription:
-        "Enter the amount, confirm \n transaction \n That’s it. You are good to go.",
+        "Enter the ticket ID, confirm ticket \n That’s it. You are good to go.",
   ),
   UnbordingContent(
     image: 'assets/images/login-image.png',
-    discription: "Quick, Easy and Free, \n get started now!",
+    discription: "Perform Cash and Mobile Money \n ticket Sales on the go! ",
   ),
 ];
