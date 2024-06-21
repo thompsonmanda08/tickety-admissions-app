@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tickety_admission/ui/pages/events/binding.dart';
+import 'package:tickety_admission/ui/pages/events/page.dart';
 import 'package:tickety_admission/ui/pages/home/binding.dart';
 import 'package:tickety_admission/ui/pages/home/page.dart';
 import 'package:tickety_admission/ui/pages/login/binding.dart';
 import 'package:tickety_admission/ui/pages/login/page.dart';
+import 'package:tickety_admission/ui/pages/manualadmission/binding.dart';
+import 'package:tickety_admission/ui/pages/manualadmission/page.dart';
 import 'package:tickety_admission/ui/pages/onboarding/binding.dart';
 import 'package:tickety_admission/ui/pages/onboarding/page.dart';
 import 'package:tickety_admission/ui/pages/pay/binding.dart';
@@ -77,6 +81,22 @@ class ScanpayApp extends StatelessWidget {
           binding: LoginBinding(),
           page: () {
             return const LoginPage();
+          },
+        ),
+        GetPage(
+          name: '/events',
+          transition: Transition.rightToLeftWithFade,
+          binding: EventsBinding(),
+          page: () {
+            return const EventsPage();
+          },
+        ),
+        GetPage(
+          name: '/manual-admission',
+          transition: Transition.rightToLeftWithFade,
+          binding: ManualAdmissionBinding(),
+          page: () {
+            return const ManualAdmissionPage();
           },
         ),
       ],
