@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFF4D5DFA);
-const kRedColor = Color(0xFFD80310);
-const kGreenColor = Color(0xFF33C700);
+const kPrimaryColor = Color(0xFF3288AF);
+const kRedColor = Color(0xFFC60000);
+const kGreenColor = Color(0xFF1AB08B);
 const kYellowColor = Color(0xFFF5B102);
 
 // *PRIMARY COLOR SHADES */
@@ -29,7 +29,7 @@ const neutralColor700 = Color(0xFF4B4B4B);
 const neutralColor800 = Color(0xFF272727);
 const neutralColor900 = Colors.black;
 
-MaterialColor  ticketyColors = const MaterialColor(0xFF4D5DFA, {
+MaterialColor ticketyColors = const MaterialColor(0xFF3288AF, {
   50: primaryColor50,
   100: primaryColor100,
   200: primaryColor200,

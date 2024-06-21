@@ -158,7 +158,7 @@ class OnBoardingPage extends GetView<OnBoardingPageController> {
                 Get.offAllNamed("/login");
               },
               child: Container(
-                margin: const EdgeInsets.only(right: 20, top: 50),
+                margin: const EdgeInsets.only(right: 20, top: 70),
                 padding: const EdgeInsets.all(12),
                 color: Colors.transparent,
                 child: Row(
@@ -167,7 +167,12 @@ class OnBoardingPage extends GetView<OnBoardingPageController> {
                   children: [
                     const SizedBox(width: 30),
                     SvgPicture.asset(
-                      'assets/icons/logo-white.svg',
+                      'assets/icons/logo.svg',
+                      width: 150,
+                      colorFilter: const ColorFilter.mode(
+                        Colors.white,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     const Text(
                       'Skip',

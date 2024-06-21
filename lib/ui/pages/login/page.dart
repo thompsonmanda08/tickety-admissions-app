@@ -38,6 +38,10 @@ class LoginPage extends GetView<LoginController> {
                       'assets/icons/background.svg',
                       width: MediaQuery.of(context).size.width,
                       fit: BoxFit.contain,
+                      colorFilter: const ColorFilter.mode(
+                        kPrimaryColor,
+                        BlendMode.srcIn,
+                      ),
                     ),
                     Positioned(
                       top: 35,
@@ -45,7 +49,12 @@ class LoginPage extends GetView<LoginController> {
                       right: 0,
                       child: Center(
                         child: SvgPicture.asset(
-                          'assets/icons/logo-white.svg',
+                          'assets/icons/logo.svg',
+                          width: 150,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
                     ),
