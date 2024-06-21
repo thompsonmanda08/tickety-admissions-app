@@ -9,28 +9,34 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
     this.leading,
     this.titleWidget,
     this.title = '',
+    this.titleColor,
     this.trailing,
     this.background,
+    this.backIconColor,
   });
 
   final String title;
   final Widget? leading;
   final Widget? trailing;
   final Widget? titleWidget;
-  final Color? background;
+  final Color? background, titleColor, backIconColor;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Container(
       color: background,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // * LEFTSIDE
-          leading ?? CustomBackButton(onTap: () => Get.back()),
+          // * LEFT-SIDE
+          leading ??
+              CustomBackButton(
+                onTap: () => Get.back(),
+                backIconColor: backIconColor,
+              ),
 
           //  * CENTER
           Expanded(
@@ -39,16 +45,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
                       offset: const Offset(10, 0),
                       child: Text(
                         title,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
-                          color: kPrimaryColor,
+                          color: titleColor ?? kPrimaryColor,
                         ),
                       ),
                     )
                   : const SizedBox.shrink()),
 
-          // * RIGHTSIDE
+          // * RIGHT-SIDE
           trailing ?? const SizedBox.shrink(),
         ],
       ),

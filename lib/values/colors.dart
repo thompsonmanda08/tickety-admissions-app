@@ -20,9 +20,9 @@ const primaryColor900 = Color(0xFF002445);
 
 // *NEUTRAL COLOR SHADES */
 const neutralColor100 = Colors.white;
-const neutralColor200 = Color(0xFF898C93);
-const neutralColor300 = Color(0xFFF5F5F5);
-const neutralColor400 = Color(0xFF616161);
+const neutralColor200 = Color(0xFFFCFCFC);
+const neutralColor300 = Color(0xFFF9FDFF);
+const neutralColor400 = Color(0xFFDFDFDF);
 const neutralColor500 = Color(0xFFEDEFFF);
 const neutralColor600 = Color(0xFF747474);
 const neutralColor700 = Color(0xFF4B4B4B);

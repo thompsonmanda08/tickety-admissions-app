@@ -2,26 +2,31 @@ import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_not
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tickety_admission/ui/pages/home/controller.dart';
+import 'package:tickety_admission/ui/pages/home/home.dart';
 import 'package:tickety_admission/ui/pages/profile/page.dart';
 import 'package:tickety_admission/ui/pages/scan/page.dart';
-import 'package:tickety_admission/ui/pages/transactions/page.dart';
 import 'package:tickety_admission/values/colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 // ignore: must_be_immutable
 class HomePage extends GetView<HomeController> {
   HomePage({super.key});
-  final _pageController = PageController(initialPage: 1);
+  final _pageController = PageController(initialPage: 0);
   final NotchBottomBarController _controller =
-      NotchBottomBarController(index: 1);
+      NotchBottomBarController(index: 0);
 
   int maxCount = 3;
 
   @override
   Widget build(BuildContext context) {
+    void navigateTo(int page) {
+      _controller.jumpTo(page);
+      _pageController.jumpToPage(page);
+    }
+
     final List<Widget> bottomBarPages = [
-      Transactions(
-        controller: (_controller),
+      HomeIndex(
+        navigateTo: navigateTo,
       ),
       const Scan(),
       ProfilePage(),
@@ -33,7 +38,7 @@ class HomePage extends GetView<HomeController> {
         children: List.generate(
             bottomBarPages.length, (index) => bottomBarPages[index]),
       ),
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       extendBody: true,
       bottomNavigationBar: (bottomBarPages.length <= maxCount)
           ? AnimatedNotchBottomBar(
@@ -42,23 +47,21 @@ class HomePage extends GetView<HomeController> {
               showLabel: true,
               textOverflow: TextOverflow.visible,
               maxLine: 1,
-              shadowElevation: 5,
-              kBottomRadius: 28.0,
+              kBottomRadius: 20,
+              showTopRadius: true,
               notchColor: kPrimaryColor,
-              removeMargins: false,
-              bottomBarWidth: 500,
+              bottomBarWidth: double.maxFinite,
               showShadow: false,
-              durationInMilliSeconds: 300,
-              elevation: 1,
+              durationInMilliSeconds: 200,
               bottomBarItems: [
                 BottomBarItem(
                   inActiveItem: SvgPicture.asset(
-                    'assets/icons/transactionsIcon.svg',
+                    'assets/icons/homeIcon.svg',
                     colorFilter: const ColorFilter.mode(
                         neutralColor100, BlendMode.srcIn),
                   ),
                   activeItem: SvgPicture.asset(
-                    'assets/icons/transactionsIcon.svg',
+                    'assets/icons/homeIcon.svg',
                     colorFilter: const ColorFilter.mode(
                         neutralColor100, BlendMode.srcIn),
                   ),

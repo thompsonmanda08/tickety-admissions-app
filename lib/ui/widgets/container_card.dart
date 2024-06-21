@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tickety_admission/values/colors.dart';
 
-
 class ContainerCard extends StatelessWidget {
   const ContainerCard({
     super.key,
@@ -14,6 +13,7 @@ class ContainerCard extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.padding = const EdgeInsets.all(16),
     this.boxConstraints,
+    this.onPress,
   });
 
   final double? height;
@@ -25,31 +25,35 @@ class ContainerCard extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final BoxConstraints? boxConstraints;
+  final void Function()? onPress;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // * CARD CONTAINER
-      constraints: boxConstraints,
-      width: width ?? double.maxFinite,
-      height: height,
-      padding: padding,
-      margin: margin,
-      decoration: ShapeDecoration(
-        color: backgroundColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        // * CARD CONTAINER
+        constraints: boxConstraints,
+        width: width ?? double.maxFinite,
+        height: height,
+        padding: padding,
+        margin: margin,
+        decoration: ShapeDecoration(
+          color: backgroundColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          shadows: [
+            BoxShadow(
+              color: neutralColor800.withOpacity(shadowOpacity),
+              blurRadius: 10,
+              offset: const Offset(-7, 9),
+              spreadRadius: 2,
+            )
+          ],
         ),
-        shadows: [
-          BoxShadow(
-            color: neutralColor800.withOpacity(shadowOpacity),
-            blurRadius: 10,
-            offset: const Offset(-7, 9),
-            spreadRadius: 2,
-          )
-        ],
+        child: child,
       ),
-      child: child,
     );
   }
 }

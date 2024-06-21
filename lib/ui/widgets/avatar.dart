@@ -23,7 +23,7 @@ class Avatar extends StatelessWidget {
     }
 
     return CircleAvatar(
-      backgroundColor: primaryColor50,
+      backgroundColor: kPrimaryColor,
       backgroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
       child: imageUrl == null
           ? Text(
@@ -31,7 +31,7 @@ class Avatar extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: neutralColor600,
+                color: neutralColor100,
               ),
             )
           : null,

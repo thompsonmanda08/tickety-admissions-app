@@ -7,7 +7,7 @@ import 'package:tickety_admission/ui/pages/profile/controller.dart';
 import 'package:tickety_admission/ui/pages/transactions/controller.dart';
 import 'package:tickety_admission/ui/widgets/avatar.dart';
 import 'package:tickety_admission/ui/widgets/empty.dart';
-import 'package:tickety_admission/ui/widgets/n_bage.dart';
+import 'package:tickety_admission/ui/widgets/settings_icon.dart';
 import 'package:tickety_admission/ui/widgets/search.dart';
 import 'package:tickety_admission/ui/widgets/transaction_tile.dart';
 import 'package:tickety_admission/values/colors.dart';
@@ -57,7 +57,7 @@ class _TransactionsState extends State<Transactions> {
                     ),
                   ),
                   const SizedBox(width: 10.0),
-                  const NotificationBage(),
+                  const SettingsIcon(),
                 ],
               ),
               const SizedBox(height: 10.0),

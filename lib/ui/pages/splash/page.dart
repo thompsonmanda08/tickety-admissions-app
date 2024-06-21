@@ -5,12 +5,13 @@ import 'package:tickety_admission/values/colors.dart';
 import 'controller.dart';
 
 class SplashPage extends GetView<SplashPageController> {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: kPrimaryColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -18,41 +19,15 @@ class SplashPage extends GetView<SplashPageController> {
           Center(
             child: GestureDetector(
               onDoubleTap: () => Get.offNamed("/onboarding"),
-              child: SizedBox(
-                width: screenSize.width * 0.65,
-                child: SvgPicture.asset('assets/icons/splash-logo.svg'),
-              ),
-            ), // Logo image path
-          ),
-          const SizedBox(height: 40),
-          Container(
-            width: 200,
-            height: 50,
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Center(
-              child: Text(
-                'SCANPAY',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900,
+              child: Center(
+                child: SizedBox(
+                  width: screenSize.width * 0.65,
+                  child: SvgPicture.asset(
+                    'assets/icons/logo.svg',
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          const Center(
-            child: Text(
-              'Your Perfect Payment Partner',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 12,
-                color: kPrimaryColor,
-                fontWeight: FontWeight.w300,
               ),
             ), // Logo image path
           ),

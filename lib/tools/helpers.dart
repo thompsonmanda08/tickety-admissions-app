@@ -28,8 +28,8 @@ APIServiceResponse<R> unpackAPIResponse<R>(Response r) {
 }
 
 createLog(String message) {
-  log("[SCANPAY] $message");
-  print("[SCANPAY] $message");
+  log("[TICKETY] $message");
+  print("[TICKETY] $message");
 }
 
 showDefaultLoader([String? title = "Please wait..."]) {

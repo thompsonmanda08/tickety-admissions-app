@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/login/controller.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';
+import 'package:tickety_admission/ui/widgets/logo.dart';
 import 'package:tickety_admission/ui/widgets/text_input_form_field.dart';
 import 'package:tickety_admission/values/colors.dart';
 
@@ -43,21 +44,7 @@ class LoginPage extends GetView<LoginController> {
                         BlendMode.srcIn,
                       ),
                     ),
-                    Positioned(
-                      top: 35,
-                      left: 0,
-                      right: 0,
-                      child: Center(
-                        child: SvgPicture.asset(
-                          'assets/icons/logo.svg',
-                          width: 150,
-                          colorFilter: const ColorFilter.mode(
-                            Colors.white,
-                            BlendMode.srcIn,
-                          ),
-                        ),
-                      ),
-                    ),
+                    const Positioned(top: 35, left: 0, right: 0, child: Logo()),
                     const Positioned(
                       top: 90,
                       left: 0,
@@ -115,11 +102,12 @@ class LoginPage extends GetView<LoginController> {
                           Obx(() {
                             bool isValid = fieldsFilledAndValid();
                             return CustomButton(
-                              isDisabled: isValid,
+                              // isDisabled: isValid,
                               text: 'Login',
                               isLoading: controller.isLoading.value,
                               handleOnClick: () {
-                                controller.handleLogin();
+                                // controller.handleLogin();
+                                Get.toNamed("/home");
                               },
                             );
                           }),

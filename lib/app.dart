@@ -8,13 +8,15 @@ import 'package:tickety_admission/ui/pages/onboarding/binding.dart';
 import 'package:tickety_admission/ui/pages/onboarding/page.dart';
 import 'package:tickety_admission/ui/pages/pay/binding.dart';
 import 'package:tickety_admission/ui/pages/pay/page.dart';
+import 'package:tickety_admission/ui/pages/settings/binding.dart';
+import 'package:tickety_admission/ui/pages/settings/page.dart';
 import 'package:tickety_admission/ui/pages/splash/binding.dart';
 import 'package:tickety_admission/ui/pages/splash/page.dart';
 import 'package:tickety_admission/ui/pages/status/page.dart';
 import 'package:tickety_admission/values/colors.dart';
 
-class ScanpayApp extends StatelessWidget {
-  const ScanpayApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class ScanpayApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: ticketyColors,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: ticketyColors),
-        scaffoldBackgroundColor: const Color(0Xfff9f9f9),
+        scaffoldBackgroundColor: const Color(0XFFFCFCFC),
         fontFamily: "League Spartan",
       ),
       initialRoute: '/',
@@ -53,6 +55,14 @@ class ScanpayApp extends StatelessWidget {
           binding: HomeBinding(),
           page: () {
             return HomePage();
+          },
+        ),
+        GetPage(
+          name: '/settings',
+          transition: Transition.rightToLeftWithFade,
+          binding: SettingsPageBinding(),
+          page: () {
+            return const SettingsPage();
           },
         ),
         GetPage(

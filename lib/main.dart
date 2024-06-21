@@ -20,5 +20,5 @@ void main() async {
 
   // User session storage
   await GetStorage.init('userSession');
-  runApp(const ScanpayApp());
+  runApp(const App());
 }
