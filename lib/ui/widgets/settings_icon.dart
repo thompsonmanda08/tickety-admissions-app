@@ -10,7 +10,7 @@ class SettingsIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed("/settings"),
+      onTap: () => Get.toNamed("/events"),
       child: CircleAvatar(
         backgroundColor: kPrimaryColor.withOpacity(0.0575),
         minRadius: 24,
