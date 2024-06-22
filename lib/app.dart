@@ -12,6 +12,8 @@ import 'package:tickety_admission/ui/pages/onboarding/binding.dart';
 import 'package:tickety_admission/ui/pages/onboarding/page.dart';
 import 'package:tickety_admission/ui/pages/pay/binding.dart';
 import 'package:tickety_admission/ui/pages/pay/page.dart';
+import 'package:tickety_admission/ui/pages/reports/binding.dart';
+import 'package:tickety_admission/ui/pages/reports/page.dart';
 import 'package:tickety_admission/ui/pages/settings/binding.dart';
 import 'package:tickety_admission/ui/pages/settings/page.dart';
 import 'package:tickety_admission/ui/pages/splash/binding.dart';
@@ -107,6 +109,14 @@ class App extends StatelessWidget {
           binding: ManualAdmissionBinding(),
           page: () {
             return const ManualAdmissionPage();
+          },
+        ),
+        GetPage(
+          name: '/reports',
+          transition: Transition.rightToLeftWithFade,
+          binding: ReportsBinding(),
+          page: () {
+            return const ReportsPage();
           },
         ),
       ],

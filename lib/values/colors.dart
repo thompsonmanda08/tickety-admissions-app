@@ -4,6 +4,7 @@ const kPrimaryColor = Color(0xFF3288AF);
 const kRedColor = Color(0xFFC60000);
 const kGreenColor = Color(0xFF1AB08B);
 const kYellowColor = Color(0xFFF5B102);
+const kPurpleColor = Color(0xFF8676FD);
 
 // *PRIMARY COLOR SHADES */
 const primaryColor50 = Color(0xFFEDEFFF);
