@@ -47,62 +47,82 @@ class HomeIndex extends GetView<HomeController> {
       ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        child: Container(
-          color: neutralColor300,
-          height: screenSize.height,
-          width: screenSize.width,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              const SizedBox(height: 24),
-              const ContainerCard(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            bottom: 60,
+          ),
+          child: Container(
+            color: neutralColor300,
+            height: screenSize.height,
+            width: screenSize.width,
+            child: Column(
+              children: [
+                const SizedBox(height: 24),
+                const ContainerCard(
                   height: 150,
-                  child: Column(children: [
-                    Text("EVENT IMG"),
-                  ])),
-              const SizedBox(height: 24),
+                  child: Column(
+                    children: [
+                      Text("EVENT IMG"),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
 
-              // ************* ACTION LIST ITEMS ****************//
-              ActionButton(
-                iconSrc: "assets/icons/scanIcon.svg",
-                iconColor: kPrimaryColor,
-                iconBackgroundColor: Colors.transparent,
-                backgroundColor: Colors.white,
-                borderRadius: 20,
-                text: "Scan QR code",
-                onTap: () => navigateTo(1),
-              ), // INDEX 1 ==> Scan Page
-              const SizedBox(height: 16),
-              ActionButton(
-                iconSrc: "assets/icons/manualAdmissionIcon.svg",
-                iconColor: kPrimaryColor,
-                iconBackgroundColor: Colors.transparent,
-                backgroundColor: Colors.white,
-                borderRadius: 20,
-                text: "Manual Admission",
-                onTap: () => Get.toNamed("manual-admission"),
-              ), //
-              const SizedBox(height: 16),
-              ActionButton(
-                iconSrc: "assets/icons/saleIcon.svg",
-                iconColor: kPrimaryColor,
-                iconBackgroundColor: Colors.transparent,
-                backgroundColor: Colors.white,
-                borderRadius: 20,
-                text: "Ticket Sale",
-                onTap: () => Get.toNamed("ticket-sale"),
-              ),
-              const SizedBox(height: 16), //
-              ActionButton(
-                iconSrc: "assets/icons/reportsIcon.svg",
-                iconColor: kPrimaryColor,
-                iconBackgroundColor: Colors.transparent,
-                backgroundColor: Colors.white,
-                borderRadius: 20,
-                text: "Reports & Stats",
-                onTap: () => Get.toNamed("reports"),
-              ), //
-            ],
+                // ************* ACTION LIST ITEMS ****************//
+                ActionButton(
+                  iconSrc: "assets/icons/scanIcon.svg",
+                  iconColor: kPrimaryColor,
+                  iconBackgroundColor: Colors.transparent,
+                  backgroundColor: Colors.white,
+                  borderRadius: 20,
+                  text: "Scan QR code",
+                  onTap: () => navigateTo(1),
+                ), // INDEX 1 ==> Scan Page
+                const SizedBox(height: 16),
+                ActionButton(
+                  iconSrc: "assets/icons/manualAdmissionIcon.svg",
+                  iconColor: kPrimaryColor,
+                  iconBackgroundColor: Colors.transparent,
+                  backgroundColor: Colors.white,
+                  borderRadius: 20,
+                  text: "Manual Admission",
+                  onTap: () => Get.toNamed("manual-admission"),
+                ), //
+                const SizedBox(height: 16),
+                ActionButton(
+                  iconSrc: "assets/icons/saleIcon.svg",
+                  iconColor: kPrimaryColor,
+                  iconBackgroundColor: Colors.transparent,
+                  backgroundColor: Colors.white,
+                  borderRadius: 20,
+                  text: "Ticket Sale",
+                  onTap: () => Get.toNamed("ticket-sale"),
+                ),
+                const SizedBox(height: 16), //
+                ActionButton(
+                  iconSrc: "assets/icons/reportsIcon.svg",
+                  iconColor: kPrimaryColor,
+                  iconBackgroundColor: Colors.transparent,
+                  backgroundColor: Colors.white,
+                  borderRadius: 20,
+                  text: "Reports & Stats",
+                  onTap: () => Get.toNamed("reports"),
+                ),
+                const SizedBox(height: 16), //
+                ActionButton(
+                  iconSrc: "assets/icons/reportsIcon.svg",
+                  iconColor: kPrimaryColor,
+                  iconBackgroundColor: Colors.transparent,
+                  backgroundColor: Colors.white,
+                  borderRadius: 20,
+                  text: "Status",
+                  onTap: () => Get.toNamed("/status"),
+                ), //
+                //
+              ],
+            ),
           ),
         ),
       ),

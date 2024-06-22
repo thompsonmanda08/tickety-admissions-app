@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  final VoidCallback? onTap;
-  final String text;
-  final double? fontSize, borderCircular, elevation, height, width;
-  final Color? color,
-      endColor,
-      beginColor,
-      borderColor,
-      backgroundColor,
-      shadowColor,
-      boxShadowColor,
-      fontColor;
-  final FontWeight? fontWeight;
-  final bool linearGradient;
-  final BoxDecoration? boxDecoration;
-  final TextStyle? textStyle;
-  final Widget? child;
-
   const Button({
     super.key,
     required this.text,
@@ -27,7 +10,7 @@ class Button extends StatelessWidget {
     this.color,
     this.borderColor,
     this.fontWeight,
-    this.borderCircular,
+    this.borderRadius,
     this.fontColor,
     this.linearGradient = false,
     this.height,
@@ -41,6 +24,23 @@ class Button extends StatelessWidget {
     this.shadowColor,
     this.boxShadowColor,
   });
+
+  final VoidCallback? onTap;
+  final String text;
+  final double? fontSize, borderRadius, elevation, height, width;
+  final Color? color,
+      endColor,
+      beginColor,
+      borderColor,
+      backgroundColor,
+      shadowColor,
+      boxShadowColor,
+      fontColor;
+  final FontWeight? fontWeight;
+  final bool linearGradient;
+  final BoxDecoration? boxDecoration;
+  final TextStyle? textStyle;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class Button extends StatelessWidget {
                     )
                   : null,
               color: color,
-              borderRadius: BorderRadius.circular(borderCircular ?? 16)),
+              borderRadius: BorderRadius.circular(borderRadius ?? 16)),
       child: ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(
@@ -80,7 +80,7 @@ class Button extends StatelessWidget {
             RoundedRectangleBorder(
               side: BorderSide(color: borderColor ?? Colors.transparent),
               borderRadius: BorderRadius.circular(
-                borderCircular ?? 10,
+                borderRadius ?? 10,
               ),
             ),
           ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
-import 'package:tickety_admission/ui/widgets/search.dart';
 import 'package:tickety_admission/values/colors.dart';
 import 'controller.dart';
 

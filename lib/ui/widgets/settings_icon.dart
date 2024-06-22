@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:tickety_admission/ui/widgets/button_2.dart';
 import 'package:tickety_admission/values/colors.dart';
 
 class SettingsIcon extends StatelessWidget {
