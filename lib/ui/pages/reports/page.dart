@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/reports/controller.dart';
 import 'package:tickety_admission/ui/pages/reports/widgets/stats.dart';
+import 'package:tickety_admission/ui/widgets/appbar.dart';
+import 'package:tickety_admission/ui/widgets/main_header.dart';
 import 'package:tickety_admission/ui/widgets/tab.dart';
 import 'package:tickety_admission/values/colors.dart';
 
@@ -12,75 +14,29 @@ class ReportsPage extends GetView<ReportsController> {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
     return ScrollConfiguration(
       behavior: NoGlowScrollBehavior(),
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Stack(
+          appBar: const CustomAppBar(),
+          body: SingleChildScrollView(
+            child: Container(
+              constraints: BoxConstraints(minHeight: screenSize.height * 0.9),
+              child: Column(
                 children: [
-                  SvgPicture.asset(
-                    'assets/icons/background.svg',
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.contain,
-                    colorFilter: const ColorFilter.mode(
-                      kPrimaryColor,
-                      BlendMode.srcIn,
-                    ),
+                  const MainHeader(
+                    // removeLogo: true,
+                    title: 'Reports & Statistics',
+                    subtitle:
+                        'Keep track of Ticket sales and admissions on the platform',
                   ),
-                  Positioned(
-                    top: 35,
-                    left: 0,
-                    right: 0,
-                    child: Center(
-                      child: SvgPicture.asset(
-                        'assets/icons/logo.svg',
-                        width: 150,
-                        colorFilter: const ColorFilter.mode(
-                          Colors.white,
-                          BlendMode.srcIn,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Positioned(
-                    top: 90,
-                    left: 0,
-                    right: 0,
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      'Reports & Statistics',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        fontStyle: FontStyle.normal,
-                        color: neutralColor100,
-                      ),
-                    ),
-                  ),
-                  const Positioned(
-                    top: 130,
-                    left: 0,
-                    right: 0,
-                    child: Text(
-                      textAlign: TextAlign.center,
-                      'Keep track of Ticket sales and admissions on the platform',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                        color: neutralColor100,
-                      ),
-                    ),
-                  ),
-                  Padding(
+                  Container(
                     padding: const EdgeInsets.all(25.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 250.0),
                         CustomTab(
                           tabTitles: const ['My Stats', 'All Stats'],
                           tabContent: const [

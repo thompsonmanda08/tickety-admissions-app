@@ -8,6 +8,7 @@ class ContainerCard extends StatelessWidget {
     this.width,
     this.margin,
     this.child,
+    this.imageSrc,
     this.borderRadius = 15,
     this.shadowOpacity = 0.05,
     this.backgroundColor = Colors.white,
@@ -22,6 +23,7 @@ class ContainerCard extends StatelessWidget {
   final double shadowOpacity;
   final Widget? child;
   final Color? backgroundColor;
+  final String? imageSrc;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final BoxConstraints? boxConstraints;
@@ -39,6 +41,10 @@ class ContainerCard extends StatelessWidget {
         padding: padding,
         margin: margin,
         decoration: ShapeDecoration(
+          image: imageSrc != null
+              ? DecorationImage(
+                  image: AssetImage(imageSrc as String), fit: BoxFit.cover)
+              : null,
           color: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),

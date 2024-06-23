@@ -43,7 +43,9 @@ class HomeIndex extends GetView<HomeController> {
             onSearch: (String str) => {},
           ),
         ),
-        trailing: const SettingsIcon(),
+        trailing: SettingsIcon(
+          onTap: () => Get.toNamed("/events"),
+        ),
       ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -61,6 +63,7 @@ class HomeIndex extends GetView<HomeController> {
               children: [
                 const SizedBox(height: 24),
                 const ContainerCard(
+                  imageSrc: "assets/images/events.jpg",
                   height: 150,
                   child: Column(
                     children: [
@@ -98,7 +101,7 @@ class HomeIndex extends GetView<HomeController> {
                   backgroundColor: Colors.white,
                   borderRadius: 20,
                   text: "Ticket Sale",
-                  onTap: () => Get.toNamed("ticket-sale"),
+                  onTap: () => Get.toNamed("/ticket-sale"),
                 ),
                 const SizedBox(height: 16), //
                 ActionButton(
@@ -108,7 +111,7 @@ class HomeIndex extends GetView<HomeController> {
                   backgroundColor: Colors.white,
                   borderRadius: 20,
                   text: "Reports & Stats",
-                  onTap: () => Get.toNamed("reports"),
+                  onTap: () => Get.toNamed("/reports"),
                 ),
                 const SizedBox(height: 16), //
                 ActionButton(

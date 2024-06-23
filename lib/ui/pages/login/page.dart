@@ -6,6 +6,8 @@ import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/login/controller.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';
 import 'package:tickety_admission/ui/widgets/logo.dart';
+import 'package:tickety_admission/ui/widgets/main_header.dart';
+import 'package:tickety_admission/ui/widgets/svg_icon.dart';
 import 'package:tickety_admission/ui/widgets/text_input_form_field.dart';
 import 'package:tickety_admission/values/colors.dart';
 
@@ -33,123 +35,100 @@ class LoginPage extends GetView<LoginController> {
           child: Scaffold(
             body: SafeArea(
               child: SingleChildScrollView(
-                child: Stack(
+                child: Column(
                   children: [
-                    SvgPicture.asset(
-                      'assets/icons/background.svg',
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.contain,
-                      colorFilter: const ColorFilter.mode(
-                        kPrimaryColor,
-                        BlendMode.srcIn,
-                      ),
+                    const MainHeader(
+                      title: "Welcome to Tickety",
+                      subtitle:
+                          "Login to handle admissions and make ticket sales",
                     ),
-                    const Positioned(top: 35, left: 0, right: 0, child: Logo()),
-                    const Positioned(
-                      top: 90,
-                      left: 0,
-                      right: 0,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        'Welcome to Tickey',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          fontStyle: FontStyle.normal,
-                          color: neutralColor100,
-                        ),
+                    Container(
+                      constraints: BoxConstraints(
+                        maxHeight: MediaQuery.of(context).size.height * 0.65,
+                        minHeight: MediaQuery.of(context).size.height * 0.5,
                       ),
-                    ),
-                    const Positioned(
-                      top: 130,
-                      left: 0,
-                      right: 0,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        'Login to handle admissions and make ticket sales',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          color: neutralColor100,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(25.0),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 250.0),
-                          CustomTextInputField(
-                            textInputType: TextInputType.phone,
-                            inputFieldName: "username",
-                            labelText: "Username",
-                            handleOnChanged: (value) {
-                              controller.phone.value = value;
-                            },
-                          ),
-                          const SizedBox(height: 20.0),
-                          CustomTextInputField(
-                            textInputType: TextInputType.text,
-                            obscureText: true,
-                            inputFieldName: "password",
-                            labelText: "Password",
-                            handleOnChanged: (value) {
-                              controller.pin.value = value;
-                            },
-                          ),
-                          const SizedBox(height: 20.0),
-                          Obx(() {
-                            bool isValid = fieldsFilledAndValid();
-                            return CustomButton(
-                              // isDisabled: isValid,
-                              text: 'Login',
-                              isLoading: controller.isLoading.value,
-                              handleOnClick: () {
-                                // controller.handleLogin();
-                                Get.toNamed("/home");
-                              },
-                            );
-                          }),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Unable to login?',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  fontStyle: FontStyle.normal,
-                                  color: neutralColor400,
+                      // color: Colors.red,
+                      child: Padding(
+                        padding: const EdgeInsets.all(24.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //  ************** LOGIN INPUT FIELDS *************** //
+                            Column(
+                              children: [
+                                CustomTextInputField(
+                                  textInputType: TextInputType.phone,
+                                  inputFieldName: "username",
+                                  labelText: "Username",
+                                  handleOnChanged: (value) {
+                                    controller.phone.value = value;
+                                  },
                                 ),
-                              ),
-                              const SizedBox(width: 5.0),
-                              GestureDetector(
-                                onTap: () => Get.toNamed('/signup'),
-                                child: const Text(
-                                  'Contact Support',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    fontStyle: FontStyle.normal,
-                                    color: kPrimaryColor,
-                                  ),
+                                const SizedBox(height: 20.0),
+                                CustomTextInputField(
+                                  textInputType: TextInputType.text,
+                                  obscureText: true,
+                                  inputFieldName: "password",
+                                  labelText: "Password",
+                                  handleOnChanged: (value) {
+                                    controller.pin.value = value;
+                                  },
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 10.0),
-                          const Text(
-                            textAlign: TextAlign.center,
-                            'Powered by BGS',
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              fontStyle: FontStyle.normal,
-                              color: neutralColor400,
+                                const SizedBox(height: 20.0),
+                                Obx(() {
+                                  bool isValid = fieldsFilledAndValid();
+                                  return CustomButton(
+                                    // isDisabled: isValid,
+                                    text: 'Login',
+                                    isLoading: controller.isLoading.value,
+                                    handleOnClick: () {
+                                      // controller.handleLogin();
+                                      Get.toNamed("/home");
+                                    },
+                                  );
+                                }),
+                                const SizedBox(height: 48.0),
+                              ],
                             ),
-                          ),
-                        ],
+                            //  ************** FOOTER CONTENT *************** //
+                            Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      'Unable to login?',
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        fontStyle: FontStyle.normal,
+                                        color: neutralColor600,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5.0),
+                                    GestureDetector(
+                                      onTap: () => Get.toNamed('/signup'),
+                                      child: const Text(
+                                        'Contact Support',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          fontStyle: FontStyle.normal,
+                                          color: kPrimaryColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10.0),
+                                SvgPicture.asset(
+                                  width: 140,
+                                  'assets/images/poweredby.svg',
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
