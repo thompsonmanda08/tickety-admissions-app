@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/reports/controller.dart';
@@ -7,7 +6,6 @@ import 'package:tickety_admission/ui/pages/reports/widgets/stats.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/main_header.dart';
 import 'package:tickety_admission/ui/widgets/tab.dart';
-import 'package:tickety_admission/values/colors.dart';
 
 class ReportsPage extends GetView<ReportsController> {
   const ReportsPage({super.key});

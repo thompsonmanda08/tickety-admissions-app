@@ -5,9 +5,7 @@ import 'package:get/get.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/login/controller.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';
-import 'package:tickety_admission/ui/widgets/logo.dart';
 import 'package:tickety_admission/ui/widgets/main_header.dart';
-import 'package:tickety_admission/ui/widgets/svg_icon.dart';
 import 'package:tickety_admission/ui/widgets/text_input_form_field.dart';
 import 'package:tickety_admission/values/colors.dart';
 
