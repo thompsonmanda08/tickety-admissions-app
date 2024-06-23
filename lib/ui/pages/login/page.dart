@@ -14,7 +14,8 @@ import 'package:tickety_admission/values/colors.dart';
 class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
   bool fieldsFilledAndValid() {
-    if (controller.phone.value.isNotEmpty && controller.pin.value.isNotEmpty) {
+    if (controller.authID.value.isNotEmpty &&
+        controller.authPassword.value.isNotEmpty) {
       return false;
     }
 
@@ -57,11 +58,10 @@ class LoginPage extends GetView<LoginController> {
                             Column(
                               children: [
                                 CustomTextInputField(
-                                  textInputType: TextInputType.phone,
-                                  inputFieldName: "username",
-                                  labelText: "Username",
+                                  inputFieldName: "login ID",
+                                  labelText: "Login ID",
                                   handleOnChanged: (value) {
-                                    controller.phone.value = value;
+                                    controller.authID.value = value;
                                   },
                                 ),
                                 const SizedBox(height: 20.0),
@@ -71,19 +71,19 @@ class LoginPage extends GetView<LoginController> {
                                   inputFieldName: "password",
                                   labelText: "Password",
                                   handleOnChanged: (value) {
-                                    controller.pin.value = value;
+                                    controller.authPassword.value = value;
                                   },
                                 ),
                                 const SizedBox(height: 20.0),
                                 Obx(() {
                                   bool isValid = fieldsFilledAndValid();
                                   return CustomButton(
-                                    // isDisabled: isValid,
+                                    isDisabled: isValid,
                                     text: 'Login',
                                     isLoading: controller.isLoading.value,
                                     handleOnClick: () {
-                                      // controller.handleLogin();
-                                      Get.toNamed("/home");
+                                      controller.handleLogin();
+                                      // Get.toNamed("/home");
                                     },
                                   );
                                 }),

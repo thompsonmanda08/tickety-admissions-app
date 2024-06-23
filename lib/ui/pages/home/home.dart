@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/ui/pages/home/controller.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/action_button.dart';
@@ -34,15 +35,17 @@ class HomeIndex extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
+    UserSessionService session = Get.find<UserSessionService>();
+
+    // ****************** SCREEN RENDERER ************************ /
     return Scaffold(
       appBar: CustomAppBar(
-        leading: const Avatar(firstName: "FirstName", lastName: "lastName"),
-        // title: "Ticket Admin",
-        titleWidget: Expanded(
-          child: Search(
-            onSearch: (String str) => {},
-          ),
+        leading: Avatar(
+          firstName: session.firstName,
+          lastName: session.lastName,
         ),
+        title: "Tickety Admin",
+        // 
         trailing: SettingsIcon(
           onTap: () => Get.toNamed("/events"),
         ),
