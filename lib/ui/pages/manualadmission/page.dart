@@ -53,12 +53,12 @@ class ManualAdmissionPage extends GetView<ManualAdmissionController> {
                         Obx(() {
                           bool isValid = fieldsFilledAndValid();
                           return CustomButton(
-                            isDisabled: isValid,
+                            isDisabled: controller.isLoading.value
+                                ? controller.isLoading.value
+                                : isValid,
                             text: 'Validate',
                             isLoading: controller.isLoading.value,
-                            handleOnClick: () {
-                              Get.toNamed('/home');
-                            },
+                            handleOnClick: () => controller.validateTicket(),
                           );
                         }),
                       ],
