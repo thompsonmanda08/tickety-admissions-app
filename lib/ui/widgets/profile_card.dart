@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:tickety_admission/ui/widgets/avatar.dart';
 import 'package:tickety_admission/values/colors.dart';
 
-
 class ProfileCard extends StatelessWidget {
   final String name;
   final String phone;
   final String firstName;
   final String lastName;
-  final int transactions;
+  final int admissions;
   final int points;
   final int rank;
   const ProfileCard({
@@ -17,7 +16,7 @@ class ProfileCard extends StatelessWidget {
     required this.phone,
     required this.firstName,
     required this.lastName,
-    required this.transactions,
+    required this.admissions,
     required this.points,
     required this.rank,
   });
@@ -70,7 +69,7 @@ class ProfileCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    '$transactions',
+                    '$admissions',
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
@@ -78,7 +77,7 @@ class ProfileCard extends StatelessWidget {
                     ),
                   ),
                   const Text(
-                    'Transactions',
+                    'Admissions',
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,

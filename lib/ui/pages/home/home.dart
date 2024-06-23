@@ -35,17 +35,44 @@ class HomeIndex extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    UserSessionService session = Get.find<UserSessionService>();
 
     // ****************** SCREEN RENDERER ************************ /
     return Scaffold(
       appBar: CustomAppBar(
         leading: Avatar(
-          firstName: session.firstName,
-          lastName: session.lastName,
+          firstName: controller.session.firstName,
+          lastName: controller.session.lastName,
         ),
         title: "Tickety Admin",
-        // 
+        titleWidget: Center(
+          child: Container(
+            // color: Colors.red,
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 4),
+            width: double.maxFinite,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Hello,',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
+                    color: neutralColor100,
+                    height: 0,
+                  ),
+                ),
+                Text(
+                  "${controller.session.firstName} ${controller.session.lastName}",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20,
+                    color: neutralColor100,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
         trailing: SettingsIcon(
           onTap: () => Get.toNamed("/events"),
         ),
@@ -65,13 +92,36 @@ class HomeIndex extends GetView<HomeController> {
             child: Column(
               children: [
                 const SizedBox(height: 24),
-                const ContainerCard(
+                ContainerCard(
                   imageSrc: "assets/images/events.jpg",
                   height: 150,
-                  child: Column(
-                    children: [
-                      Text("EVENT IMG"),
-                    ],
+                  clipBehavior: Clip.antiAlias,
+                  padding: const EdgeInsets.all(0),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        colors: [
+                          Colors.black, // START
+                          Colors.transparent, // END
+                        ],
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          controller.session.event,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: neutralColor100,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 24),

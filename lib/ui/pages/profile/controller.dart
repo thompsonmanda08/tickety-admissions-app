@@ -5,7 +5,7 @@ import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 
 class ProfileController extends GetxController {
-  UserSessionService userSessionService = Get.find<UserSessionService>();
+  UserSessionService session = Get.find<UserSessionService>();
   final ProfileService _profileService = Get.find<ProfileService>();
   var profileDetails = <String, dynamic>{}.obs;
   var isLoading = false.obs;
@@ -17,7 +17,7 @@ class ProfileController extends GetxController {
   }
 
   void signUserOut() {
-    userSessionService.stopUserSession();
+    session.stopUserSession();
     Get.offAllNamed("/login");
   }
 

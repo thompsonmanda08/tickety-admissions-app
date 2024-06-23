@@ -49,24 +49,25 @@ class Button extends StatelessWidget {
       height: height ?? 54,
       decoration: boxDecoration ??
           BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                    color: boxShadowColor ?? Colors.transparent,
-                    offset: const Offset(0, 4),
-                    blurRadius: 5.0)
-              ],
-              gradient: linearGradient
-                  ? LinearGradient(
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                      colors: [
-                        beginColor ?? const Color(0xff427ECF),
-                        endColor ?? const Color(0xff2D5994)
-                      ],
-                    )
-                  : null,
-              color: color,
-              borderRadius: BorderRadius.circular(borderRadius ?? 16)),
+            boxShadow: [
+              BoxShadow(
+                  color: boxShadowColor ?? Colors.transparent,
+                  offset: const Offset(0, 4),
+                  blurRadius: 5.0)
+            ],
+            gradient: linearGradient
+                ? LinearGradient(
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                    colors: [
+                      beginColor ?? const Color(0xff427ECF),
+                      endColor ?? const Color(0xff2D5994)
+                    ],
+                  )
+                : null,
+            color: color,
+            borderRadius: BorderRadius.circular(borderRadius ?? 16),
+          ),
       child: ElevatedButton(
         onPressed: onTap,
         style: ButtonStyle(

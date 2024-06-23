@@ -124,9 +124,7 @@ class EventsPage extends GetView<EventsController> {
                             isDisabled: isValid,
                             text: 'Continue',
                             isLoading: controller.isLoading.value,
-                            handleOnClick: () {
-                              Get.toNamed('/home');
-                            },
+                            handleOnClick: controller.handleChangeSessionEvent,
                           );
                         }),
                       ],

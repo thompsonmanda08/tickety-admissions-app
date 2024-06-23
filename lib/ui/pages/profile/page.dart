@@ -15,15 +15,7 @@ import 'package:tickety_admission/values/colors.dart';
 
 // ignore: must_be_immutable
 class ProfilePage extends GetView<ProfileController> {
-  final UserSessionService userSessionService = Get.find<UserSessionService>();
-  final TransactionsController transactionsController =
-      Get.put(TransactionsController());
   ProfilePage({super.key});
-
-  void signUserOut() {
-    userSessionService.stopUserSession();
-    Get.offAllNamed("/login");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +37,12 @@ class ProfilePage extends GetView<ProfileController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ProfileCard(
-                        name: 'Raphael',
-                        phone: '0976566990',
-                        firstName: 'Raphael',
-                        lastName: 'Mbewe',
-                        transactions:
-                            transactionsController.filteredTransactions.length,
+                        name:
+                            "${controller.session.firstName} ${controller.session.lastName}",
+                        phone: controller.session.mobileNo,
+                        firstName: controller.session.firstName,
+                        lastName: controller.session.lastName,
+                        admissions: 0,
                         points: 0,
                         rank: 0,
                       ),
@@ -68,7 +60,8 @@ class ProfilePage extends GetView<ProfileController> {
                         textInputType: TextInputType.text,
                         inputFieldName: "full_name",
                         labelText: "Full Name",
-                        initialValue: 'Raphael Mbewe',
+                        initialValue:
+                            "${controller.session.firstName} ${controller.session.lastName}",
                         handleOnChanged: (String value) {
                           // ignore: avoid_print
                           print("ID Number: $value");
@@ -80,23 +73,13 @@ class ProfilePage extends GetView<ProfileController> {
                         maxLength: 13,
                         inputFieldName: "mobile_number",
                         labelText: "Mobile Number",
-                        initialValue: '0965294989',
+                        initialValue: controller.session.mobileNo,
                         handleOnChanged: (String value) {
                           // ignore: avoid_print
                           print("ID Number: $value");
                         },
                       ),
                       const SizedBox(height: 20.0),
-                      CustomDropDownField(
-                        id: "payment_provider",
-                        dropDownItems: telcos
-                            .map((element) => element["name"].toString())
-                            .toList(),
-                        onChanged: (value) {
-                          value!;
-                        },
-                        selectedItem: "Payment Provider",
-                      ),
                       const SizedBox(height: 20.0),
                       CustomButton(
                         text: 'Update Profile',
@@ -105,7 +88,7 @@ class ProfilePage extends GetView<ProfileController> {
                       const SizedBox(height: 20.0),
                       Center(
                         child: GestureDetector(
-                          onTap: () => signUserOut(),
+                          onTap: () => controller.signUserOut(),
                           child: const Text(
                             'Log Out',
                             style: TextStyle(
@@ -126,10 +109,4 @@ class ProfilePage extends GetView<ProfileController> {
       ),
     );
   }
-
-  List<Map<String, String>> telcos = [
-    {"name": "ZamtelPay"},
-    {"name": "MTN MOMO"},
-    {"name": "AIRTEL MONEY"},
-  ];
 }

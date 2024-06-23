@@ -11,13 +11,13 @@ import 'package:tickety_admission/ui/pages/transactions/controller.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<PayService>(PayService());
+    // Get.put<PayService>(PayService());
+    // Get.put<PayController>(PayController());
+    // Get.put<TransactionsService>(TransactionsService());
+    // Get.put<TransactionsController>(TransactionsController());
     Get.put<ProfileService>(ProfileService());
     Get.put<ProfileController>(ProfileController());
-    Get.put<PayController>(PayController());
     Get.put<HomeController>(HomeController());
-    Get.put<TransactionsService>(TransactionsService());
-    Get.put<TransactionsController>(TransactionsController());
     Get.put<UserSessionService>(UserSessionService());
   }
 }
