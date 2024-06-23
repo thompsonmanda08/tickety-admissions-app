@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tickety_admission/values/colors.dart';
 
-
 /// *  InputFieldName - Then name of the input field
 /// *  textInputType - The type of information for which to optimize the text input control.
 /// *  hintText - Text that suggests what sort of input the field accepts.
@@ -81,11 +80,11 @@ class CustomTextInputField extends StatelessWidget {
     this.textAlign = TextAlign.left,
     this.actionKeyboard = TextInputAction.next,
     this.prefixOffset = const Offset(0, 10),
-    this.inputTextColor = neutralColor400,
-    this.inputFontSize = 20,
+    this.inputTextColor = neutralColor900,
+    this.inputFontSize = 24,
     this.inputFontWeight = FontWeight.w700,
     this.labelTextColor = neutralColor600,
-    this.labelFontSize = 16,
+    this.labelFontSize = 20,
     this.labelFontWeight = FontWeight.w500,
   });
 
@@ -95,76 +94,78 @@ class CustomTextInputField extends StatelessWidget {
       data: Theme.of(context).copyWith(
         primaryColor: kPrimaryColor,
       ),
-      child: Container(
-        constraints: BoxConstraints(maxHeight: height!),
-        decoration: BoxDecoration(
-          color: primaryColor50,
-          borderRadius: BorderRadius.circular(20),
+      child: TextFormField(
+        controller: controller,
+        initialValue: initialValue,
+        showCursor: true,
+        cursorHeight: 24,
+        focusNode: focusNode,
+        textInputAction: TextInputAction.next,
+        enabled: isEnabled,
+        textAlign: textAlign,
+        onChanged: handleOnChanged,
+        keyboardType: textInputType,
+        obscureText: obscureText,
+        style: TextStyle(
+          color: inputTextColor,
+          fontSize: inputFontSize,
+          fontWeight: inputFontWeight,
         ),
-        width: width,
-        // height: height,
-        child: TextFormField(
-          initialValue: initialValue,
-          showCursor: true,
-          controller: controller,
-          focusNode: focusNode,
-          textInputAction: TextInputAction.next,
-          enabled: isEnabled,
-          textAlign: textAlign,
-          onChanged: handleOnChanged,
-          keyboardType: textInputType,
-          obscureText: obscureText,
-          style: TextStyle(
-            color: inputTextColor,
-            fontSize: inputFontSize,
-            fontWeight: inputFontWeight,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(maxLength),
+        ],
+        decoration: InputDecoration(
+          // border: const OutlineInputBorder(
+          //   borderSide: BorderSide(color: neutralColor600),
+          // ),
+
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: kPrimaryColor, width: 2),
+              borderRadius: BorderRadius.circular(12)),
+          enabledBorder: OutlineInputBorder(
+              borderSide:
+                  BorderSide(color: kPrimaryColor.withOpacity(0.2), width: 2),
+              borderRadius: BorderRadius.circular(12)),
+          labelText: labelText,
+          labelStyle: TextStyle(
+            color: labelTextColor,
+            fontSize: labelFontSize,
+            fontWeight: FontWeight.w500,
           ),
-          inputFormatters: [
-            LengthLimitingTextInputFormatter(maxLength),
-          ],
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            labelText: labelText,
-            labelStyle: TextStyle(
-              color: labelTextColor,
-              fontSize: labelFontSize,
-              fontWeight: FontWeight.w600,
-            ),
-            prefixIcon: showPrefixIcon
-                ? Transform.translate(
-                    offset: prefixOffset,
-                    child: prefixIcon,
-                  )
-                : null,
-            contentPadding: const EdgeInsets.only(
-              top: 5,
-              bottom: 10,
-              left: 15,
-              right: 15,
-            ),
-            isDense: true,
-            errorStyle: const TextStyle(
+          prefixIcon: showPrefixIcon
+              ? Transform.translate(
+                  offset: prefixOffset,
+                  child: prefixIcon,
+                )
+              : null,
+          contentPadding: const EdgeInsets.only(
+            top: 18,
+            // bottom: 0,
+            left: 15,
+            right: 15,
+          ),
+          isDense: true,
+          errorStyle: const TextStyle(
+            color: Colors.red,
+            fontSize: 14,
+            fontWeight: FontWeight.w300,
+            fontStyle: FontStyle.normal,
+            letterSpacing: 1.2,
+          ),
+          errorBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
               color: Colors.red,
-              fontSize: 14,
-              fontWeight: FontWeight.w300,
-              fontStyle: FontStyle.normal,
-              letterSpacing: 1.2,
-            ),
-            errorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.red,
-              ),
-            ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.red,
-              ),
             ),
           ),
-          onTap: () {
-            if (onFieldTap != null) onFieldTap!();
-          },
+          focusedErrorBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Colors.red,
+            ),
+          ),
         ),
+        onTap: () {
+          if (onFieldTap != null) onFieldTap!();
+        },
       ),
     );
   }

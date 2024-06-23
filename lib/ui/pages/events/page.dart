@@ -125,7 +125,7 @@ class EventsPage extends GetView<EventsController> {
                             text: 'Continue',
                             isLoading: controller.isLoading.value,
                             handleOnClick: () {
-                              Get.toNamed('/manual-admission');
+                              Get.toNamed('/home');
                             },
                           );
                         }),

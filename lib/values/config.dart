@@ -1,1 +1,1 @@
-const apiBaseURL = "http://scanpayapi.eu-north-1.elasticbeanstalk.com/";
+const apiBaseURL = "https://tickety.bgsgroup.co.zm/srv/organiser-app/api/v1";

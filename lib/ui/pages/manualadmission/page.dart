@@ -87,17 +87,7 @@ class ManualAdmissionPage extends GetView<ManualAdmissionController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 250.0),
-                        const Text(
-                          'Ticket Number',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            fontStyle: FontStyle.normal,
-                            color: neutralColor900,
-                          ),
-                        ),
-                        const SizedBox(height: 10.0),
+                        const SizedBox(height: 260.0),
                         CustomTextInputField(
                           textInputType: TextInputType.number,
                           inputFieldName: "ticket_number",
