@@ -29,6 +29,7 @@ class Avatar extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       padding: const EdgeInsets.all(2),
+      constraints: const BoxConstraints(maxHeight: 60, maxWidth: 60),
       decoration: BoxDecoration(
         border: Border.all(width: 2, color: neutralColor100.withOpacity(0.25)),
         borderRadius: const BorderRadius.all(Radius.circular(50)),
@@ -48,12 +49,14 @@ class Avatar extends StatelessWidget {
               backgroundImage:
                   imageUrl != null ? NetworkImage(imageUrl!) : null,
               child: imageUrl == null
-                  ? Text(
-                      initials,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: neutralColor100,
+                  ? Center(
+                      child: Text(
+                        initials,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: neutralColor100,
+                        ),
                       ),
                     )
                   : null,
