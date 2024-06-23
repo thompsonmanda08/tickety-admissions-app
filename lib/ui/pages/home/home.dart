@@ -113,7 +113,7 @@ class HomeIndex extends GetView<HomeController> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          controller.session.event,
+                          controller.session.event["eventName"],
                           style: const TextStyle(
                             fontSize: 20,
                             color: neutralColor100,
@@ -175,6 +175,16 @@ class HomeIndex extends GetView<HomeController> {
                   borderRadius: 20,
                   text: "Status",
                   onTap: () => Get.toNamed("/status"),
+                ),
+                const SizedBox(height: 16), //
+                ActionButton(
+                  iconSrc: "assets/icons/reportsIcon.svg",
+                  iconColor: kPrimaryColor,
+                  iconBackgroundColor: Colors.transparent,
+                  backgroundColor: Colors.white,
+                  borderRadius: 20,
+                  text: "Logout",
+                  onTap: () => controller.profile.signUserOut(),
                 ), //
                 //
               ],

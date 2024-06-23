@@ -10,13 +10,18 @@ class SearchableDropdownMenu extends StatelessWidget {
     this.leading,
     this.trailing,
     this.hintText = "Search...",
+    this.displayKey = "",
+    this.isDynamicSearch =
+        false, // Allows searching of dynamic items in Objects
   });
 
   final Function(SearchFieldListItem<dynamic>)? handleSelectItem;
-  final List<String> searchableItems;
+  final List<dynamic> searchableItems;
   final String hintText;
+  final String displayKey;
   final Widget? leading;
   final Widget? trailing;
+  final bool isDynamicSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,7 @@ class SearchableDropdownMenu extends StatelessWidget {
       suggestions: searchableItems
           .map(
             (searchableItem) => SearchFieldListItem(
-              searchableItem,
+              isDynamicSearch ? searchableItem[displayKey] : searchableItem,
               item: searchableItem,
               child: Container(
                 padding:
@@ -61,9 +66,11 @@ class SearchableDropdownMenu extends StatelessWidget {
                   children: [
                     leading ?? const SizedBox.shrink(),
                     Text(
-                      searchableItem,
+                      isDynamicSearch
+                          ? searchableItem[displayKey]
+                          : searchableItem,
                       style: const TextStyle(
-                        color: primaryColor900,
+                        color: neutralColor900,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),

@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:tickety_admission/models/api_response.dart';
-import 'package:tickety_admission/services/transactions_service.dart';
+import 'package:tickety_admission/services/events_service.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 
 class TransactionsController extends GetxController {
-  final TransactionsService _transactionsService =
-      Get.find<TransactionsService>();
+  // final TransactionsService _transactionsService =
+  //     Get.find<TransactionsService>();
   var transactions = <Map<String, dynamic>>[].obs;
   var filteredTransactions = <Map<String, dynamic>>[].obs;
   var isLoading = false.obs;
@@ -13,25 +13,25 @@ class TransactionsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchTransactions();
+    // fetchTransactions();
   }
 
-  Future<void> fetchTransactions() async {
-    isLoading.value = true;
-    try {
-      APIServiceResponse<Map<String, dynamic>> response =
-          await _transactionsService.transactions();
-      if (response.data != null) {
-        transactions.value = List<Map<String, dynamic>>.from(
-            response.data!['result']['transactions']);
-        filteredTransactions.value = transactions;
-      }
-    } catch (e) {
-      createLog('Error fetching transactions details: $e');
-    } finally {
-      isLoading.value = false;
-    }
-  }
+  // Future<void> fetchTransactions() async {
+  //   isLoading.value = true;
+  //   try {
+  //     // APIServiceResponse<Map<String, dynamic>> response =
+  //         // await _transactionsService.transactions();
+  //     if (response.data != null) {
+  //       transactions.value = List<Map<String, dynamic>>.from(
+  //           response.data!['result']['transactions']);
+  //       filteredTransactions.value = transactions;
+  //     }
+  //   } catch (e) {
+  //     createLog('Error fetching transactions details: $e');
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
 
   void filterTransactions(String query) {
     if (query.isEmpty) {

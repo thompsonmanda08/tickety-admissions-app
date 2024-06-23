@@ -19,7 +19,7 @@ class UserSessionService extends GetxService {
   final _organiserID = 0.val("organiserID", getBox: _box);
   final _fingerprint = "".val("fingerprint", getBox: _box);
   final _fingerprintSignature = "".val("fingerprintSignature", getBox: _box);
-  final _event = "".val("event", getBox: _box);
+  final _event = <String, dynamic>{}.val("event", getBox: _box);
 
   String get authToken => _authToken.val;
   String get firstName => _firstName.val;
@@ -35,7 +35,7 @@ class UserSessionService extends GetxService {
   int get userID => _userID.val;
   String get fingerprint => _fingerprint.val;
   String get fingerprintSignature => _fingerprintSignature.val;
-  String get event => _event.val;
+  Map<String, dynamic> get event => _event.val;
 
   set authToken(String val) {
     _authToken.val = val;
@@ -93,19 +93,19 @@ class UserSessionService extends GetxService {
     _fingerprintSignature.val = val;
   }
 
-  set event(String val) {
+  set event(Map<String, dynamic> val) {
     _event.val = val;
   }
 
   void clear() {
     _authToken.val = "";
-    _event.val = "";
+    _event.val = {};
     _isLoggedIn.val = false;
   }
 
   void stopUserSession() {
     _authToken.val = "";
-    _event.val = "";
+    _event.val = {};
     _isLoggedIn.val = false;
   }
 

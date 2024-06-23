@@ -2,20 +2,17 @@ import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/profile/controller.dart';
-import 'package:tickety_admission/ui/pages/transactions/controller.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';
-import 'package:tickety_admission/ui/widgets/drop_down_field.dart';
 import 'package:tickety_admission/ui/widgets/profile_card.dart';
 import 'package:tickety_admission/ui/widgets/text_input_form_field.dart';
 import 'package:tickety_admission/values/colors.dart';
 
 // ignore: must_be_immutable
 class ProfilePage extends GetView<ProfileController> {
-  ProfilePage({super.key});
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {

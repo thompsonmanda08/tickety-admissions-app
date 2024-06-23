@@ -29,7 +29,7 @@ class _TransactionsState extends State<Transactions> {
   @override
   void initState() {
     super.initState();
-    transactionsController.fetchTransactions();
+    // transactionsController.fetchTransactions();
   }
 
   @override

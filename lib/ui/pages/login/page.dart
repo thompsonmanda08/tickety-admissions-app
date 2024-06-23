@@ -58,6 +58,7 @@ class LoginPage extends GetView<LoginController> {
                                 CustomTextInputField(
                                   inputFieldName: "login ID",
                                   labelText: "Login ID",
+                                  initialValue: controller.authID.value,
                                   handleOnChanged: (value) {
                                     controller.authID.value = value;
                                   },

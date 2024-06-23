@@ -15,7 +15,7 @@ class SplashPageController extends GetxController {
       // _userSession.authToken - Needs to Be Verified and Authenticated
       if (_userSession.authToken != "") {
         createLog(_userSession.authToken);
-        return Get.offAllNamed("/home");
+        return Get.offAllNamed("/events");
       }
 
       SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -22,7 +22,6 @@ APIServiceResponse<R> unpackAPIResponse<R>(Response r) {
   res.statusCode = data?["statusCode"];
   res.message = data?["message"];
   res.data = data != null && data["data"] != null ? data["data"] as R : null;
-
   return res;
 }
 

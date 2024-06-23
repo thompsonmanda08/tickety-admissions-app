@@ -6,7 +6,7 @@ import 'controller.dart';
 class SplashPageBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(SplashPageController());
     Get.put(UserSessionService());
+    Get.put(SplashPageController());
   }
 }

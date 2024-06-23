@@ -136,7 +136,7 @@ class OnBoardingPage extends GetView<OnBoardingPageController> {
                         if (controller.currentIndex.value ==
                             contents.length - 1) {
                           await controller.storeOnboardInfo();
-                          Get.offAndToNamed("/welcome");
+                          Get.offAndToNamed("/login");
                         }
                         controller.slideController.nextPage(
                           duration: const Duration(milliseconds: 300),
