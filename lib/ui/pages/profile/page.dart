@@ -45,12 +45,10 @@ class ProfilePage extends GetView<ProfileController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ProfileCard(
-                        name: controller.profileDetails['profile']['firstName'],
-                        phone: controller.profileDetails['profile']['phone'],
-                        firstName: controller.profileDetails['profile']
-                            ['firstName'],
-                        lastName: controller.profileDetails['profile']
-                            ['lastName'],
+                        name: 'Raphael',
+                        phone: '0976566990',
+                        firstName: 'Raphael',
+                        lastName: 'Mbewe',
                         transactions:
                             transactionsController.filteredTransactions.length,
                         points: 0,
@@ -70,8 +68,7 @@ class ProfilePage extends GetView<ProfileController> {
                         textInputType: TextInputType.text,
                         inputFieldName: "full_name",
                         labelText: "Full Name",
-                        initialValue:
-                            '${controller.profileDetails['profile']['firstName']} ${controller.profileDetails['profile']['lastName']}',
+                        initialValue: 'Raphael Mbewe',
                         handleOnChanged: (String value) {
                           // ignore: avoid_print
                           print("ID Number: $value");
@@ -83,8 +80,7 @@ class ProfilePage extends GetView<ProfileController> {
                         maxLength: 13,
                         inputFieldName: "mobile_number",
                         labelText: "Mobile Number",
-                        initialValue: controller.profileDetails['profile']
-                            ['phone'],
+                        initialValue: '0965294989',
                         handleOnChanged: (String value) {
                           // ignore: avoid_print
                           print("ID Number: $value");
