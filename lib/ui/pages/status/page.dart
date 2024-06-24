@@ -12,7 +12,9 @@ class StatusPage extends GetView<StatusPageController> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<void>(
-      future: controller.admissions.manualValidation ? controller.admissions.validateTicketNumber() : controller.admissions.validateTicketNumber(),
+      future: controller.manualValidation.value
+          ? controller.validateTicketNumber()
+          : controller.validateTicketSignature(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // * LOADING INDICATOR - WHILE FETCHING TICKET DETAILS.

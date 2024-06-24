@@ -10,7 +10,7 @@ import 'package:tickety_admission/ui/widgets/text_input_form_field.dart';
 class ManualAdmissionPage extends GetView<ManualAdmissionController> {
   const ManualAdmissionPage({super.key});
   bool fieldsFilledAndValid() {
-    if (controller.ticketNumber.value.isEmpty) {
+    if (controller.statusController.ticketNumber.value.isEmpty) {
       return false;
     }
     return true;
@@ -48,18 +48,24 @@ class ManualAdmissionPage extends GetView<ManualAdmissionController> {
                             inputFieldName: "ticket_number",
                             labelText: "Ticket Number",
                             handleOnChanged: (value) {
-                              controller.ticketNumber.value = value;
+                              controller.statusController.ticketNumber.value =
+                                  value;
                             },
                           ),
                           const SizedBox(height: 20.0),
                           CustomButton(
-                            isDisabled: controller.isLoading.value
-                                ? controller.isLoading.value
+                            isDisabled: controller
+                                    .statusController.isLoading.value
+                                ? controller.statusController.isLoading.value
                                 : !isValid,
                             text: 'Validate',
-                            isLoading: controller.isLoading.value,
-                            handleOnClick: () =>
-                                controller.validateTicketNumber(),
+                            isLoading:
+                                controller.statusController.isLoading.value,
+                            handleOnClick: () {
+                              controller.statusController
+                                  .validateTicketNumber();
+                              FocusManager.instance.primaryFocus?.unfocus();
+                            },
                           )
                         ],
                       );
