@@ -76,6 +76,40 @@ class StatusPageController extends GetxController {
     }
   }
 
+  Future<void> handleAdmission() async {
+    isLoading.value = true;
+    try {
+      APIServiceResponse<Map<String, dynamic>> response =
+          await _admissionServices.ticketAdmission(
+        eventID: ticketDetails['eventID'],
+        ticketID: ticketDetails['ticketID'],
+        ticketNo: ticketDetails['ticketNo'],
+        signature: ticketDetails['signature'],
+      );
+      if (response.statusText == "success") {
+        showSnackBar(
+          title: 'Success',
+          message: '${response.message}',
+        );
+        Get.offAllNamed('/home');
+      } else {
+        showAlertBox(
+          type: 'error',
+          title: 'Error',
+          message: '${response.message}',
+        );
+      }
+    } catch (e) {
+      showAlertBox(
+        type: 'error',
+        title: 'Error',
+        message: 'Oops! Something went wrong',
+      );
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
   @override
   void onInit() async {
     super.onInit();
