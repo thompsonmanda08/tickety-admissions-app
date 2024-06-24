@@ -15,7 +15,7 @@ class StatusPageController extends GetxController {
   var ticketInvalidMessage = "".obs;
 
   void reset() {
-    ticketNumber.value = "";
+    // ticketNumber.value = "";
     urlQuery.value = "";
     isValidTicket.value = false;
     ticketInvalidMessage.value = "";
@@ -34,27 +34,28 @@ class StatusPageController extends GetxController {
 
       // // createLog("RESPONSE DATA: ${serviceResponse.data}");
 
-      // createLog("SERVER RESPONSE: ${serviceResponse.message}");
-      // createLog("RESPONSE DATA: ${serviceResponse.data}");
+      createLog("SERVER RESPONSE: ${serviceResponse.message}");
+      createLog("RESPONSE DATA: ${serviceResponse.data}");
 
       if (serviceResponse.statusText == "success") {
         isValidTicket.value = serviceResponse.data['isValid'];
         ticketDetails.value = serviceResponse.data ?? {};
-        return serviceResponse.data!;
+        ticketInvalidMessage.value = "${serviceResponse.message}";
+        return serviceResponse.data;
       } else {
         isValidTicket.value = false;
         ticketInvalidMessage.value = "${serviceResponse.message}";
-        // showAlertBox(
-        //   type: "error",
-        //   title: "Ticket Not Found",
-        //   message: "${serviceResponse.message}",
-        // );
-        return {};
+
+        return {
+          "message": "${serviceResponse.message}",
+          "isValidTicket": false
+        };
       }
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
-      return {};
+      return {
+        "message": e.toString(),
+        "isValidTicket": false,
+      };
     }
   }
 

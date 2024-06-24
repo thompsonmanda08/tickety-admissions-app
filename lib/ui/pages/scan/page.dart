@@ -37,6 +37,7 @@ class _ScanState extends State<Scan> {
     return Scaffold(
       appBar: const CustomAppBar(
         // title: "Admit a Ticket",
+        leading: SizedBox.shrink(),
         trailing: SettingsIcon(),
       ),
       body: Stack(
@@ -83,6 +84,7 @@ class _ScanState extends State<Scan> {
   final StatusPageController statusController =
       Get.find<StatusPageController>();
   void _onQRViewCreated(QRViewController controller) {
+  // 
     setState(() {
       this.controller = controller;
     });
@@ -90,9 +92,10 @@ class _ScanState extends State<Scan> {
       setState(() {
         result = scanData;
         if (result != null) {
-          final scannedData = result!.code;
-          print("[ BGS TICKETY QR ] $scannedData");
-          Get.toNamed('/status', arguments: scannedData);
+          // final scannedData = result!.code;
+          // print("[ BGS TICKETY QR ] $scannedData");
+          statusController.urlQuery.value = result!.code!;
+          Get.toNamed('/status');
         } else {
           showSnackBar(
             title: 'Invalid QR Code',

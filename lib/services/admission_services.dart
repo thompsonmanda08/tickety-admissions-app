@@ -12,6 +12,9 @@ class AdmissionServices extends AuthenticatedService {
       '/main/tickets/validate$urlQuery',
     );
 
+    // createLog("STATUS CODE: ${r.status.code}");
+    // createLog("REQUEST URL: ${r.request?.url.toString()}");
+
     return unpackAPIResponse<Map<String, dynamic>>(r);
   }
 

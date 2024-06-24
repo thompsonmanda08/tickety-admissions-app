@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:tickety_admission/ui/widgets/button_2.dart';
 import 'package:tickety_admission/values/colors.dart';
 
-class ErrorScreen extends StatelessWidget {
-  const ErrorScreen({super.key});
+class NoTicketDataFound extends StatelessWidget {
+  const NoTicketDataFound({super.key, required this.message});
+
+  final String message;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,9 @@ class ErrorScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  const Text(
-                    'Oops! Something went wrong!',
-                    style: TextStyle(
+                  Text(
+                    message,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -44,10 +46,26 @@ class ErrorScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 25),
                   Button(
-                    text: "Go Back Home",
+                    text: "Re-Scan",
+                    height: 60,
                     backgroundColor: Colors.white,
-                    color: kPrimaryColor,
+                    fontColor: kPrimaryColor,
                     onTap: () => Get.back(),
+                  ),
+                  const SizedBox(height: 25),
+                  Button(
+                    text: "Manual Admission",
+                    backgroundColor: kPrimaryColor,
+                    height: 60,
+                    boxDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 1,
+                      ),
+                    ),
+                    fontColor: Colors.white,
+                    onTap: () => Get.offNamed("/manual-admission"),
                   )
                 ],
               ),
