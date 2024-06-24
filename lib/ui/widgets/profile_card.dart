@@ -94,7 +94,7 @@ class ProfileCard extends StatelessWidget {
                     ),
                   ),
                   const Text(
-                    'Tickets Sold',
+                    'My Stats',
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
@@ -115,7 +115,7 @@ class ProfileCard extends StatelessWidget {
                     ),
                   ),
                   const Text(
-                    'Cash Sales',
+                    'All Stats',
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,
