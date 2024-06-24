@@ -4,16 +4,17 @@ import 'package:tickety_admission/services/api_service.dart';
 import 'user_session.dart';
 
 abstract class AuthenticatedService extends ApiService {
-  final UserSessionService _userSession = UserSessionService();
+  final UserSessionService session = UserSessionService();
 
   @override
   void onInit() {
     super.onInit();
 
     httpClient.addRequestModifier<dynamic>((request) {
-      if (!request.url.path.contains("/Authentication") &&
-          _userSession.isLoggedIn) {
-        request.headers['Authorization'] = 'Bearer ${_userSession.authToken}';
+      // if (!request.url.path.contains("/Authentication") && session.isLoggedIn) {
+      if (session.isLoggedIn) {
+        request.headers['Authorization'] = 'Bearer ${session.authToken}';
+        request.headers['ContextFingerprint'] = session.fingerprint;
       }
 
       return request;
@@ -24,10 +25,10 @@ abstract class AuthenticatedService extends ApiService {
     });
 
     httpClient.addAuthenticator<dynamic>((request) async {
-      Get.offAllNamed('/login');
+      Get.toNamed('/login');
       return request;
     });
 
-    httpClient.maxAuthRetries = 1;
+    httpClient.maxAuthRetries = 3;
   }
 }

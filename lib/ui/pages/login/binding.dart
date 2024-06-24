@@ -6,8 +6,8 @@ import 'package:tickety_admission/ui/pages/login/controller.dart';
 class LoginBinding extends Bindings {
   @override
   void dependencies() {
+    Get.put(UserSessionService());
     Get.put<LoginService>(LoginService());
-    Get.put<UserSessionService>(UserSessionService());
     Get.put<LoginController>(LoginController());
   }
 }

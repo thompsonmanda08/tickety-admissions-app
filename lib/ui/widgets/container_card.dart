@@ -14,6 +14,7 @@ class ContainerCard extends StatelessWidget {
     this.backgroundColor = Colors.white,
     this.padding = const EdgeInsets.all(16),
     this.boxConstraints,
+    this.clipBehavior = Clip.none,
     this.onPress,
   });
 
@@ -28,6 +29,7 @@ class ContainerCard extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final BoxConstraints? boxConstraints;
   final void Function()? onPress;
+  final Clip clipBehavior;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class ContainerCard extends StatelessWidget {
         height: height,
         padding: padding,
         margin: margin,
+        clipBehavior: clipBehavior,
         decoration: ShapeDecoration(
           image: imageSrc != null
               ? DecorationImage(

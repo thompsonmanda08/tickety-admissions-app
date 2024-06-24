@@ -1,42 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/ui/widgets/avatar.dart';
+import 'package:tickety_admission/ui/widgets/container_card.dart';
 import 'package:tickety_admission/values/colors.dart';
 
-
 class ProfileCard extends StatelessWidget {
-  final String name;
-  final String phone;
-  final String firstName;
-  final String lastName;
-  final int transactions;
-  final int points;
-  final int rank;
   const ProfileCard({
     super.key,
-    required this.name,
-    required this.phone,
-    required this.firstName,
-    required this.lastName,
-    required this.transactions,
-    required this.points,
-    required this.rank,
+    this.admissions,
+    this.points,
+    this.rank,
   });
+
+  final int? admissions;
+  final int? points;
+  final int? rank;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: neutralColor100,
-        borderRadius: BorderRadius.circular(15),
-      ),
+    UserSessionService session = Get.find<UserSessionService>();
+    String name = "${session.firstName} ${session.lastName}";
+    String phone = session.mobileNo;
+    return ContainerCard(
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           Row(
             children: [
               Avatar(
-                firstName: firstName,
-                lastName: lastName,
+                backgroundColor: kPrimaryColor,
+                firstName: session.firstName,
+                lastName: session.lastName,
               ),
               const SizedBox(width: 16),
               Column(
@@ -45,17 +40,17 @@ class ProfileCard extends StatelessWidget {
                   Text(
                     name,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 20,
                       fontWeight: FontWeight.w700,
-                      color: neutralColor400,
+                      color: neutralColor900,
                     ),
                   ),
                   Text(
                     phone,
                     style: const TextStyle(
-                      fontSize: 11,
+                      fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: neutralColor400,
+                      color: neutralColor600,
                     ),
                   ),
                 ],
@@ -70,7 +65,7 @@ class ProfileCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    '$transactions',
+                    '$admissions',
                     style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
@@ -78,7 +73,7 @@ class ProfileCard extends StatelessWidget {
                     ),
                   ),
                   const Text(
-                    'Transactions',
+                    'Admissions',
                     style: TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w600,

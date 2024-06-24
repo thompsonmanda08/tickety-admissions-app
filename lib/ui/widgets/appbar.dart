@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:tickety_admission/ui/widgets/back_button.dart';
 import 'package:tickety_admission/values/colors.dart';
@@ -40,19 +39,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
 
           //  * CENTER
           Expanded(
-              child: titleWidget == null
-                  ? Transform.translate(
-                      offset: const Offset(10, 0),
-                      child: Text(
-                        title,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18,
-                          color: titleColor ?? kPrimaryColor,
-                        ),
-                      ),
-                    )
-                  : const SizedBox.shrink()),
+            child: titleWidget ??
+                Transform.translate(
+                  offset: const Offset(10, 0),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      color: titleColor ?? neutralColor100,
+                    ),
+                  ),
+                ),
+          ),
 
           // * RIGHT-SIDE
           trailing ?? const SizedBox.shrink(),

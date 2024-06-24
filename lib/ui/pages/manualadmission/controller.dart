@@ -6,7 +6,7 @@ import 'package:tickety_admission/tools/helpers.dart';
 
 class ManualAdmissionController extends GetxController {
   final ManualAdmissionService _manualAdmissionService = Get.find<ManualAdmissionService>();
-  final UserSessionService userSessionService = Get.find<UserSessionService>();
+  final UserSessionService session = Get.find<UserSessionService>();
   var ticketDetails = <String, dynamic>{}.obs;
   var ticketNumber = "".obs;
   var isLoading = false.obs;

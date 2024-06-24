@@ -7,10 +7,16 @@ import 'package:tickety_admission/values/colors.dart';
 
 class LoginController extends GetxController {
   final LoginService _loginService = Get.find<LoginService>();
-  final UserSessionService userSessionService = Get.find<UserSessionService>();
+  final UserSessionService session = Get.find<UserSessionService>();
 
   var authID = "".obs;
   var authPassword = "".obs;
+
+  @override
+  void onInit() async {
+    super.onInit();
+    authID.value = session.loginID;
+  }
 
   var isLoading = false.obs;
 
@@ -31,12 +37,12 @@ class LoginController extends GetxController {
       if (serviceResponse.statusText == "success") {
         var sessionData = serviceResponse.data;
         // createLog('Login successful for user ${sessionData}');
-        userSessionService.startUserSession(sessionData!);
+        session.startUserSession(sessionData!);
         showSnackBar(
           title: 'Success',
           message: '${serviceResponse.message}',
         );
-        Get.offAllNamed('/home');
+        Get.offAllNamed('/events');
       } else {
         showSnackBar(
           title: 'Error',
