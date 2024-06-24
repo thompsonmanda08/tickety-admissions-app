@@ -3,14 +3,18 @@ import 'package:get/get.dart';
 import 'package:tickety_admission/ui/widgets/svg_icon.dart';
 
 class CustomBackButton extends StatelessWidget {
-  const CustomBackButton({super.key, this.backIconColor});
+  const CustomBackButton({super.key, this.onBackClick, this.backIconColor});
 
   final Color? backIconColor;
+  final void Function()? onBackClick;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.back(),
+      onTap: () {
+        Get.back();
+        onBackClick!();
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

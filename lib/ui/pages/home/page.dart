@@ -1,7 +1,6 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/ui/pages/home/controller.dart';
 import 'package:tickety_admission/ui/pages/home/home.dart';
 import 'package:tickety_admission/ui/pages/profile/page.dart';

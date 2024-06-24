@@ -11,11 +11,15 @@ class StatusPageController extends GetxController {
   var ticketNumber = "".obs;
   var urlQuery = "".obs;
   var isLoading = false.obs;
-  var manualValidation = false.obs;
+  var isValidTicket = false.obs;
+  var ticketInvalidMessage = "".obs;
 
   void reset() {
     ticketNumber.value = "";
     urlQuery.value = "";
+    isValidTicket.value = false;
+    ticketInvalidMessage.value = "";
+    ticketDetails.value = {};
   }
 
   final isValidTicketNo = false.obs;
@@ -26,25 +30,27 @@ class StatusPageController extends GetxController {
           await _admissionServices.validateTicketSignature(
         urlQuery: urlQuery.value,
       );
-      createLog("URL QUERY: ${urlQuery.value}");
+      // createLog("URL QUERY: ${urlQuery.value}");
 
+      // // createLog("RESPONSE DATA: ${serviceResponse.data}");
+
+      // createLog("SERVER RESPONSE: ${serviceResponse.message}");
       // createLog("RESPONSE DATA: ${serviceResponse.data}");
 
-      ticketDetails.value = serviceResponse.data ?? {};
-      createLog("SERVER RESPONSE: ${serviceResponse.message}");
-      createLog("RESPONSE DATA: ${serviceResponse.data}");
-      return {};
-      // if (serviceResponse.statusText == "success") {
-
-      //   return serviceResponse.data!;
-      // } else {
-      //   showAlertBox(
-      //     type: "error",
-      //     title: "Ticket Not Found",
-      //     message: "${serviceResponse.message}",
-      //   );
-      //   return {};
-      // }
+      if (serviceResponse.statusText == "success") {
+        isValidTicket.value = true;
+        ticketDetails.value = serviceResponse.data ?? {};
+        return serviceResponse.data!;
+      } else {
+        isValidTicket.value = false;
+        ticketInvalidMessage.value = "${serviceResponse.message}";
+        // showAlertBox(
+        //   type: "error",
+        //   title: "Ticket Not Found",
+        //   message: "${serviceResponse.message}",
+        // );
+        return {};
+      }
     } catch (e) {
       // ignore: avoid_print
       print(e);
@@ -81,7 +87,6 @@ class StatusPageController extends GetxController {
       createLog('Error fetching: $e');
     } finally {
       isLoading.value = false;
-      manualValidation.value = false;
     }
   }
 }

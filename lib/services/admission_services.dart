@@ -8,10 +8,10 @@ class AdmissionServices extends AuthenticatedService {
   Future<APIServiceResponse<Map<String, dynamic>>> validateTicketSignature({
     required String urlQuery,
   }) async {
-    createLog("ABSOLUTE PATH: /main/tickets/validate/$urlQuery");
     Response<dynamic> r = await get(
-      '/main/tickets/validate/$urlQuery',
+      '/main/tickets/validate$urlQuery',
     );
+
     return unpackAPIResponse<Map<String, dynamic>>(r);
   }
 
