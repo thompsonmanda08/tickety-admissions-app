@@ -11,12 +11,16 @@ class ManualAdmissionController extends GetxController {
   var ticketNumber = "".obs;
   var isLoading = false.obs;
 
+  void reset() {
+    ticketNumber.value = "";
+  }
+
   Future<Map<String, dynamic>> validateTicketSignature() async {
     try {
       APIServiceResponse serviceResponse =
           await _admissionServices.validateTicketSignature(
         eventID: session.event["eventID"],
-        ticketNo: ticketNumber.value,
+        ticketNo: int.parse(ticketNumber.value),
         signature: session.fingerprintSignature,
       );
 
@@ -44,10 +48,22 @@ class ManualAdmissionController extends GetxController {
     try {
       APIServiceResponse<Map<String, dynamic>> response =
           await _admissionServices.validateTicketNumber(
-        ticketNumber: ticketNumber.value,
+        ticketNumber: int.parse(ticketNumber.value),
         eventId: session.event["eventID"],
       );
       ticketDetails.value = response.data ?? {};
+      createLog('EVENT ID: ${session.event["eventID"]}');
+      createLog('RES Ticket Details: ${response.data}');
+      if (response.statusText == "success") {
+        reset();
+        Get.toNamed('/status', arguments: response.data);
+      } else {
+        showAlertBox(
+          type: 'error',
+          title: 'Error',
+          message: '${response.message}',
+        );
+      }
     } catch (e) {
       createLog('Error fetching profile details: $e');
     } finally {
