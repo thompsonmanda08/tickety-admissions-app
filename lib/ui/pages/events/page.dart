@@ -109,6 +109,7 @@ class EventsPage extends GetView<EventsController> {
                               controller.selectedEventName.value =
                                   selectedValue['eventName'];
                               controller.event.value = selectedValue;
+                              FocusManager.instance.primaryFocus?.unfocus();
                             },
                           ),
                           const SizedBox(height: 20.0),

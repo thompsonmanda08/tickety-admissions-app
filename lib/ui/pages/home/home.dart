@@ -17,19 +17,6 @@ class HomeIndex extends GetView<HomeController> {
     required this.navigateTo,
   });
 
-  static const List<Map<String, dynamic>> actions = [
-    {
-      "title": "Scan Qr Code",
-      "icon": "assets/icons/scanIcon.svg",
-      "page": "/manual-admission",
-    },
-    {
-      "title": "Scan Qr Code",
-      "icon": "assets/icons/scanIcon.svg",
-      "page": "/manual-admission",
-    }
-  ];
-
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
@@ -81,11 +68,9 @@ class HomeIndex extends GetView<HomeController> {
           padding: const EdgeInsets.only(
             left: 20,
             right: 20,
-            bottom: 60,
           ),
           child: Container(
             color: neutralColor300,
-            height: screenSize.height,
             width: screenSize.width,
             child: Column(
               children: [
@@ -165,25 +150,6 @@ class HomeIndex extends GetView<HomeController> {
                   onTap: () => Get.toNamed("/reports"),
                 ),
                 const SizedBox(height: 16), //
-                ActionButton(
-                  iconSrc: "assets/icons/reportsIcon.svg",
-                  iconColor: kPrimaryColor,
-                  iconBackgroundColor: Colors.transparent,
-                  backgroundColor: Colors.white,
-                  borderRadius: 20,
-                  text: "Status",
-                  onTap: () => Get.toNamed("/status"),
-                ),
-                const SizedBox(height: 16), //
-                ActionButton(
-                  iconSrc: "assets/icons/reportsIcon.svg",
-                  iconColor: kPrimaryColor,
-                  iconBackgroundColor: Colors.transparent,
-                  backgroundColor: Colors.white,
-                  borderRadius: 20,
-                  text: "Logout",
-                  onTap: () => controller.profile.signUserOut(),
-                ), //
                 //
               ],
             ),

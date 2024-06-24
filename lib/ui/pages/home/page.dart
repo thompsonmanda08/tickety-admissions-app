@@ -33,8 +33,6 @@ class HomePage extends GetView<HomeController> {
       ProfilePage(),
     ];
 
-    
-
     // ****************** SCREEN RENDERER ************************ /
     return Scaffold(
       body: PageView(
@@ -43,8 +41,8 @@ class HomePage extends GetView<HomeController> {
         children: List.generate(
             bottomBarPages.length, (index) => bottomBarPages[index]),
       ),
-      // resizeToAvoidBottomInset: false,
-      extendBody: true,
+      resizeToAvoidBottomInset: false,
+      extendBody: false,
       bottomNavigationBar: (bottomBarPages.length <= maxCount)
           ? AnimatedNotchBottomBar(
               notchBottomBarController: _controller,
@@ -52,12 +50,14 @@ class HomePage extends GetView<HomeController> {
               showLabel: true,
               textOverflow: TextOverflow.visible,
               maxLine: 1,
-              kBottomRadius: 20,
-              showTopRadius: true,
+              shadowElevation: 5,
+              kBottomRadius: 28.0,
               notchColor: kPrimaryColor,
-              bottomBarWidth: double.maxFinite,
+              removeMargins: false,
+              bottomBarWidth: 500,
               showShadow: false,
-              durationInMilliSeconds: 200,
+              durationInMilliSeconds: 300,
+              elevation: 1,
               bottomBarItems: [
                 BottomBarItem(
                   inActiveItem: SvgPicture.asset(

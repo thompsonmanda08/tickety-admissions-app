@@ -1,9 +1,13 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:tickety_admission/ui/widgets/appbar.dart';
+import 'package:tickety_admission/ui/widgets/settings_icon.dart';
 import 'package:tickety_admission/values/colors.dart';
 
 class Scan extends StatefulWidget {
@@ -31,6 +35,10 @@ class _ScanState extends State<Scan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        // title: "Admit a Ticket",
+        trailing: SettingsIcon(),
+      ),
       body: Stack(
         children: [
           _buildQrView(context),
@@ -81,17 +89,14 @@ class _ScanState extends State<Scan> {
         result = scanData;
         if (result != null) {
           final scannedData = result!.code;
-          try {
-            final formattedData = _convertToJsonFormat(scannedData as String);
-            final data = jsonDecode(formattedData);
-            if (data['merchantNumber'] != null) {
-              Get.toNamed('/pay', arguments: data);
-            }
-          } catch (e) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Invalid QR Code')),
-            );
-          }
+          print("[ BGS TICKETY QR ] $scannedData");
+          Get.toNamed('/status', arguments: scannedData);
+        
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Invalid QR Code')),
+          );
+          return;
         }
       });
     });
