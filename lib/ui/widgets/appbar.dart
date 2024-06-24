@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
     this.trailing,
     this.background,
     this.backIconColor,
+    this.onBackClick,
   });
 
   final String title;
@@ -20,6 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
   final Widget? trailing;
   final Widget? titleWidget;
   final Color? background, titleColor, backIconColor;
+  final void Function()? onBackClick;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
           leading ??
               CustomBackButton(
                 backIconColor: backIconColor,
+                onBackClick: onBackClick,
               ),
 
           //  * CENTER

@@ -8,9 +8,9 @@ import 'controller.dart';
 class StatusPageBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put<ManualAdmissionController>(ManualAdmissionController());
     Get.put(UserSessionService());
     Get.put<AdmissionServices>(AdmissionServices());
+    Get.put<ManualAdmissionController>(ManualAdmissionController());
     Get.put(StatusPageController());
   }
 }

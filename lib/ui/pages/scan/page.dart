@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:tickety_admission/tools/helpers.dart';
+import 'package:tickety_admission/ui/pages/status/controller.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/settings_icon.dart';
 import 'package:tickety_admission/values/colors.dart';
@@ -78,6 +80,8 @@ class _ScanState extends State<Scan> {
     );
   }
 
+  final StatusPageController statusController =
+      Get.find<StatusPageController>();
   void _onQRViewCreated(QRViewController controller) {
     setState(() {
       this.controller = controller;
@@ -90,8 +94,9 @@ class _ScanState extends State<Scan> {
           print("[ BGS TICKETY QR ] $scannedData");
           Get.toNamed('/status', arguments: scannedData);
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Invalid QR Code')),
+          showSnackBar(
+            title: 'Invalid QR Code',
+            message: 'Try Scanning again!',
           );
           return;
         }

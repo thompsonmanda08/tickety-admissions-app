@@ -6,13 +6,12 @@ import 'package:tickety_admission/tools/helpers.dart';
 class AdmissionServices extends AuthenticatedService {
 // LOOK UP TICKET AFTER SCANNING
   Future<APIServiceResponse<Map<String, dynamic>>> validateTicketSignature({
-    required String eventID,
-    required int ticketNo,
-    required String signature,
+    required String urlQuery,
   }) async {
     Response<dynamic> r = await get(
-      ' /main/tickets/validate?eventID=$eventID&tkt=$ticketNo&signature=$signature',
+      '/main/tickets/validate$urlQuery',
     );
+
     return unpackAPIResponse<Map<String, dynamic>>(r);
   }
 

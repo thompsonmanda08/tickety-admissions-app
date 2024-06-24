@@ -9,11 +9,17 @@ class StatusPageController extends GetxController {
   final AdmissionServices _admissionServices = Get.find<AdmissionServices>();
   var ticketDetails = <String, dynamic>{}.obs;
   var ticketNumber = "".obs;
+  var urlQuery = "".obs;
   var isLoading = false.obs;
-  var manualValidation = false.obs;
+  var isValidTicket = false.obs;
+  var ticketInvalidMessage = "".obs;
 
   void reset() {
     ticketNumber.value = "";
+    urlQuery.value = "";
+    isValidTicket.value = false;
+    ticketInvalidMessage.value = "";
+    ticketDetails.value = {};
   }
 
   final isValidTicketNo = false.obs;
@@ -22,21 +28,27 @@ class StatusPageController extends GetxController {
     try {
       APIServiceResponse serviceResponse =
           await _admissionServices.validateTicketSignature(
-        eventID: session.event["eventID"],
-        ticketNo: int.parse(ticketNumber.value),
-        signature: session.fingerprintSignature,
+        urlQuery: urlQuery.value,
       );
+      // createLog("URL QUERY: ${urlQuery.value}");
+
+      // // createLog("RESPONSE DATA: ${serviceResponse.data}");
+
+      // createLog("SERVER RESPONSE: ${serviceResponse.message}");
+      // createLog("RESPONSE DATA: ${serviceResponse.data}");
 
       if (serviceResponse.statusText == "success") {
-        print(serviceResponse.data!);
-        Get.toNamed("/status", arguments: serviceResponse.data!);
+        isValidTicket.value = true;
+        ticketDetails.value = serviceResponse.data ?? {};
         return serviceResponse.data!;
       } else {
-        showAlertBox(
-          type: "error",
-          title: "Ticket Not Found",
-          message: "${serviceResponse.message}",
-        );
+        isValidTicket.value = false;
+        ticketInvalidMessage.value = "${serviceResponse.message}";
+        // showAlertBox(
+        //   type: "error",
+        //   title: "Ticket Not Found",
+        //   message: "${serviceResponse.message}",
+        // );
         return {};
       }
     } catch (e) {
@@ -48,31 +60,33 @@ class StatusPageController extends GetxController {
 
   Future<void> validateTicketNumber() async {
     isLoading.value = true;
-    manualValidation.value = true;
+
     try {
       APIServiceResponse<Map<String, dynamic>> response =
           await _admissionServices.validateTicketNumber(
         ticketNumber: int.parse(ticketNumber.value),
         eventId: session.event["eventID"],
       );
-      ticketDetails.value = response.data ?? {};
+
       if (response.statusText == "success") {
         // STATUS VARIABLES HERE
-        isValidTicketNo.value = true;
-        reset();
-        Get.toNamed('/status');
+        ticketDetails.value = response.data ?? {};
+        urlQuery.value = ticketDetails["signatureString"];
+        if (urlQuery.value.isNotEmpty) {
+          Get.toNamed('/status');
+        }
       } else {
         showAlertBox(
           type: 'error',
           title: 'Error: Invalid Ticket',
           message: '${response.message}',
         );
+        return;
       }
     } catch (e) {
       createLog('Error fetching: $e');
     } finally {
       isLoading.value = false;
-      manualValidation.value = false;
     }
   }
 
