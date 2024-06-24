@@ -34,20 +34,16 @@ class ProfilePage extends GetView<ProfileController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 24.0),
-                const ProfileCard(
-                  admissions: 0,
-                  points: 0,
-                  rank: 0,
-                ),
-                const SizedBox(height: 30.0),
-                CustomTab(
-                  tabTitles: const ['My Stats', 'All Stats'],
-                  tabContent: const [
-                    Stats(),
-                    Stats(),
-                  ],
-                ),
-                const SizedBox(height: 30.0),
+                const ProfileCard(),
+                const SizedBox(height: 60.0),
+                // CustomTab(
+                //   tabTitles: const ['My Stats', 'All Stats'],
+                //   tabContent: const [
+                //     Stats(),
+                //     Stats(),
+                //   ],
+                // ),
+                // const SizedBox(height: 30.0),
                 Center(
                   child: GestureDetector(
                     onTap: () => controller.signUserOut(),

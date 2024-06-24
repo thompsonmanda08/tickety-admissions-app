@@ -131,26 +131,26 @@ class HomeIndex extends GetView<HomeController> {
                     onTap: () => Get.toNamed("manual-admission"),
                   ), //
                   const SizedBox(height: 16),
-                  ActionButton(
-                    iconSrc: "assets/icons/saleIcon.svg",
-                    iconColor: kPrimaryColor,
-                    iconBackgroundColor: Colors.transparent,
-                    backgroundColor: Colors.white,
-                    borderRadius: 20,
-                    text: "Ticket Sale",
-                    onTap: () => Get.toNamed("/ticket-sale"),
-                  ),
-                  const SizedBox(height: 16), //
-                  ActionButton(
-                    iconSrc: "assets/icons/reportsIcon.svg",
-                    iconColor: kPrimaryColor,
-                    iconBackgroundColor: Colors.transparent,
-                    backgroundColor: Colors.white,
-                    borderRadius: 20,
-                    text: "Reports & Stats",
-                    onTap: () => Get.toNamed("/reports"),
-                  ),
-                  const SizedBox(height: 16), //
+                  // ActionButton(
+                  //   iconSrc: "assets/icons/saleIcon.svg",
+                  //   iconColor: kPrimaryColor,
+                  //   iconBackgroundColor: Colors.transparent,
+                  //   backgroundColor: Colors.white,
+                  //   borderRadius: 20,
+                  //   text: "Ticket Sale",
+                  //   onTap: () => Get.toNamed("/ticket-sale"),
+                  // ),
+                  // const SizedBox(height: 16), //
+                  // ActionButton(
+                  //   iconSrc: "assets/icons/reportsIcon.svg",
+                  //   iconColor: kPrimaryColor,
+                  //   iconBackgroundColor: Colors.transparent,
+                  //   backgroundColor: Colors.white,
+                  //   borderRadius: 20,
+                  //   text: "Reports & Stats",
+                  //   onTap: () => Get.toNamed("/reports"),
+                  // ),
+                  // const SizedBox(height: 16), //
                   //
                 ],
               ),

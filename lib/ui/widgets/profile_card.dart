@@ -58,74 +58,74 @@ class ProfileCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    '$admissions',
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                  const Text(
-                    'Admissions',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: neutralColor400,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    '$points',
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                  const Text(
-                    'My Stats',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: neutralColor400,
-                    ),
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    '$rank',
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                  const Text(
-                    'All Stats',
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      color: neutralColor400,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         Text(
+          //           '$admissions',
+          //           style: const TextStyle(
+          //             fontSize: 22,
+          //             fontWeight: FontWeight.w700,
+          //             color: kPrimaryColor,
+          //           ),
+          //         ),
+          //         const Text(
+          //           'Admissions',
+          //           style: TextStyle(
+          //             fontSize: 11,
+          //             fontWeight: FontWeight.w600,
+          //             color: neutralColor400,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         Text(
+          //           '$points',
+          //           style: const TextStyle(
+          //             fontSize: 22,
+          //             fontWeight: FontWeight.w700,
+          //             color: kPrimaryColor,
+          //           ),
+          //         ),
+          //         const Text(
+          //           'My Stats',
+          //           style: TextStyle(
+          //             fontSize: 11,
+          //             fontWeight: FontWeight.w600,
+          //             color: neutralColor400,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       children: [
+          //         Text(
+          //           '$rank',
+          //           style: const TextStyle(
+          //             fontSize: 22,
+          //             fontWeight: FontWeight.w700,
+          //             color: kPrimaryColor,
+          //           ),
+          //         ),
+          //         const Text(
+          //           'All Stats',
+          //           style: TextStyle(
+          //             fontSize: 11,
+          //             fontWeight: FontWeight.w600,
+          //             color: neutralColor400,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

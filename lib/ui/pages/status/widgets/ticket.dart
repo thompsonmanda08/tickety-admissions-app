@@ -30,7 +30,6 @@ class TicketDetailsScreen extends GetView<StatusPageController> {
           ),
           child: Container(
             color: neutralColor300,
-            height: screenSize.height,
             width: screenSize.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,12 +55,10 @@ class TicketDetailsScreen extends GetView<StatusPageController> {
                         size: 70,
                       ),
                       Text(
-                        controller.isValidTicket.value
-                            ? "Valid Ticket"
-                            : "Invalid Ticket",
+                        controller.ticketDetails['validationMessage'] ?? '',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: 18,
                           fontWeight: FontWeight.w700,
                           height: 2,
                         ),
@@ -297,7 +294,7 @@ class TicketDetailsScreen extends GetView<StatusPageController> {
                   },
                 ),
 
-                //
+                const SizedBox(height: 24),
                 //
               ],
             ),

@@ -38,7 +38,7 @@ class StatusPageController extends GetxController {
       // createLog("RESPONSE DATA: ${serviceResponse.data}");
 
       if (serviceResponse.statusText == "success") {
-        isValidTicket.value = true;
+        isValidTicket.value = serviceResponse.data['isValid'];
         ticketDetails.value = serviceResponse.data ?? {};
         return serviceResponse.data!;
       } else {
@@ -67,11 +67,11 @@ class StatusPageController extends GetxController {
         ticketNumber: int.parse(ticketNumber.value),
         eventId: session.event["eventID"],
       );
-
+      createLog("RES: ${response.data}");
       if (response.statusText == "success") {
         // STATUS VARIABLES HERE
-        ticketDetails.value = response.data ?? {};
-        urlQuery.value = ticketDetails["signatureString"];
+        // ticketDetails.value = response.data ?? {};
+        urlQuery.value = response.data!["signatureString"];
         if (urlQuery.value.isNotEmpty) {
           Get.toNamed('/status');
         }
@@ -95,8 +95,8 @@ class StatusPageController extends GetxController {
     try {
       APIServiceResponse<Map<String, dynamic>> response =
           await _admissionServices.ticketAdmission(
-        eventID: ticketDetails['eventID'].toString(),
-        ticketID: ticketDetails['ticketID'].toString(),
+        eventID: ticketDetails['eventID'],
+        ticketID: ticketDetails['ticketID'],
         ticketNo: ticketDetails['ticketNo'].toString(),
         signature: ticketDetails['signature'].toString(),
       );
