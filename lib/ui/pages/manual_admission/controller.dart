@@ -11,7 +11,7 @@ class ManualAdmissionController extends GetxController {
   var ticketNumber = "".obs;
   var isLoading = false.obs;
 
-  Future<Map<String, dynamic>> validateTicket() async {
+  Future<Map<String, dynamic>> validateTicketSignature() async {
     try {
       APIServiceResponse serviceResponse =
           await _admissionServices.validateTicketSignature(
@@ -39,7 +39,7 @@ class ManualAdmissionController extends GetxController {
     }
   }
 
-  Future<void> fetchTicketDetails() async {
+  Future<void> validateTicketNumber() async {
     isLoading.value = true;
     try {
       APIServiceResponse<Map<String, dynamic>> response =

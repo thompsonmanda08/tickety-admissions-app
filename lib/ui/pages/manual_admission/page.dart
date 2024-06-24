@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tickety_admission/tools/helpers.dart';
-import 'package:tickety_admission/ui/pages/manualadmission/controller.dart';
+import 'package:tickety_admission/ui/pages/manual_admission/controller.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';
 import 'package:tickety_admission/ui/widgets/main_header.dart';
@@ -58,7 +58,8 @@ class ManualAdmissionPage extends GetView<ManualAdmissionController> {
                                 : isValid,
                             text: 'Validate',
                             isLoading: controller.isLoading.value,
-                            handleOnClick: () => controller.validateTicket(),
+                            handleOnClick: () =>
+                                controller.validateTicketNumber(),
                           );
                         }),
                       ],

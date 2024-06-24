@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tickety_admission/ui/pages/manualadmission/controller.dart';
+import 'package:tickety_admission/ui/pages/manual_admission/controller.dart';
 
 class ManualAdmissionBinding extends Bindings {
   @override
