@@ -1,8 +1,5 @@
 import 'package:get/get.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/profile/controller.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';

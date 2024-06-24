@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:tickety_admission/ui/widgets/back_button.dart';
 import 'package:tickety_admission/values/colors.dart';

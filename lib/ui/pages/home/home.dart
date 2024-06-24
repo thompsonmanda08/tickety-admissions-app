@@ -2,14 +2,12 @@
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/ui/pages/home/controller.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/action_button.dart';
 import 'package:tickety_admission/ui/widgets/avatar.dart';
 import 'package:tickety_admission/ui/widgets/container_card.dart';
 import 'package:tickety_admission/ui/widgets/settings_icon.dart';
-import 'package:tickety_admission/ui/widgets/search.dart';
 import 'package:tickety_admission/values/colors.dart';
 
 class HomeIndex extends GetView<HomeController> {

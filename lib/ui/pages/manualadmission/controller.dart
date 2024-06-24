@@ -5,15 +5,16 @@ import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 
 class ManualAdmissionController extends GetxController {
-  final UserSessionService session = Get.find<UserSessionService>();
   final AdmissionServices _admissionServices = Get.find<AdmissionServices>();
+  final UserSessionService session = Get.find<UserSessionService>();
+  var ticketDetails = <String, dynamic>{}.obs;
   var ticketNumber = "".obs;
   var isLoading = false.obs;
 
   Future<Map<String, dynamic>> validateTicket() async {
     try {
       APIServiceResponse serviceResponse =
-          await _admissionServices.ticketValidation(
+          await _admissionServices.validateTicketSignature(
         eventID: session.event["eventID"],
         ticketNo: ticketNumber.value,
         signature: session.fingerprintSignature,
@@ -35,6 +36,22 @@ class ManualAdmissionController extends GetxController {
       // ignore: avoid_print
       print(e);
       return {};
+    }
+  }
+
+  Future<void> fetchTicketDetails() async {
+    isLoading.value = true;
+    try {
+      APIServiceResponse<Map<String, dynamic>> response =
+          await _admissionServices.validateTicketNumber(
+        ticketNumber: ticketNumber.value,
+        eventId: session.event["eventID"],
+      );
+      ticketDetails.value = response.data ?? {};
+    } catch (e) {
+      createLog('Error fetching profile details: $e');
+    } finally {
+      isLoading.value = false;
     }
   }
 }
