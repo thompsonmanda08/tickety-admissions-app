@@ -9,14 +9,14 @@ class LoginController extends GetxController {
   final LoginService _loginService = Get.find<LoginService>();
   final UserSessionService userSessionService = Get.find<UserSessionService>();
 
-  var phone = "".obs;
-  var pin = "".obs;
+  var authID = "".obs;
+  var authPassword = "".obs;
 
   var isLoading = false.obs;
 
   void resetAll() {
-    phone.value = "";
-    pin.value = "";
+    authID.value = "";
+    authPassword.value = "";
   }
 
   Future<void> handleLogin() async {
@@ -24,14 +24,19 @@ class LoginController extends GetxController {
     try {
       APIServiceResponse<Map<String, dynamic>> serviceResponse =
           await _loginService.loginUser(
-              phone: phone.value, pin: pin.value, role: "CLIENT");
-      if (serviceResponse.statusCode == 200) {
-        userSessionService.startUserSession(serviceResponse.data!);
+        authID: authID.value,
+        authPassword: authPassword.value,
+      );
+
+      if (serviceResponse.statusText == "success") {
+        var sessionData = serviceResponse.data;
+        // createLog('Login successful for user ${sessionData}');
+        userSessionService.startUserSession(sessionData!);
         showSnackBar(
           title: 'Success',
           message: '${serviceResponse.message}',
         );
-        Get.offAllNamed('/events');
+        Get.offAllNamed('/home');
       } else {
         showSnackBar(
           title: 'Error',

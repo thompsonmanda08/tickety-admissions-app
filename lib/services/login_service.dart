@@ -5,16 +5,14 @@ import 'package:tickety_admission/tools/helpers.dart';
 
 class LoginService extends ApiService {
   Future<APIServiceResponse<Map<String, dynamic>>> loginUser({
-    required String phone,
-    required String pin,
-    required String role,
+    required String authID,
+    required String authPassword,
   }) async {
     Response<dynamic> r = await post(
-      'api/v1/auth/login',
+      '/auth/login',
       {
-        'phone': phone,
-        'pin': pin,
-        'role': role
+        "authID": authID,
+        "authPassword": authPassword,
       },
     );
     return unpackAPIResponse<Map<String, dynamic>>(r);

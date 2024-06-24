@@ -18,10 +18,9 @@ APIServiceResponse<R> unpackAPIResponse<R>(Response r) {
   }
   Map<String, dynamic>? data = r.body;
 
-  res.statusCode = data?["isSuccess"];
+  res.statusText = data?["status"];
   res.statusCode = data?["statusCode"];
   res.message = data?["message"];
-
   res.data = data != null && data["data"] != null ? data["data"] as R : null;
 
   return res;

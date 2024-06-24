@@ -15,13 +15,13 @@ import 'package:tickety_admission/values/colors.dart';
 
 // ignore: must_be_immutable
 class ProfilePage extends GetView<ProfileController> {
-  final UserSessionService userSessionService = Get.find<UserSessionService>();
+  final UserSessionService session = Get.find<UserSessionService>();
   final TransactionsController transactionsController =
       Get.put(TransactionsController());
   ProfilePage({super.key});
 
   void signUserOut() {
-    userSessionService.stopUserSession();
+    session.stopUserSession();
     Get.offAllNamed("/login");
   }
 
