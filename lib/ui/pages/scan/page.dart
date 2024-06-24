@@ -1,6 +1,4 @@
 // ignore_for_file: avoid_print
-
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -91,7 +89,6 @@ class _ScanState extends State<Scan> {
           final scannedData = result!.code;
           print("[ BGS TICKETY QR ] $scannedData");
           Get.toNamed('/status', arguments: scannedData);
-        
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Invalid QR Code')),
@@ -109,17 +106,6 @@ class _ScanState extends State<Scan> {
         const SnackBar(content: Text('No Permission')),
       );
     }
-  }
-
-  String _convertToJsonFormat(String data) {
-    final regex = RegExp(r'(\w+): ([^,}]+)');
-    final formattedData = data.replaceAllMapped(regex, (match) {
-      final key = match[1];
-      final value = match[2];
-
-      return '"$key": "$value"';
-    });
-    return formattedData;
   }
 
   @override

@@ -1,7 +1,6 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tickety_admission/services/user_session.dart';
 import 'package:tickety_admission/ui/pages/home/controller.dart';
 import 'package:tickety_admission/ui/pages/home/home.dart';
 import 'package:tickety_admission/ui/pages/profile/page.dart';
@@ -30,7 +29,7 @@ class HomePage extends GetView<HomeController> {
         navigateTo: navigateTo,
       ),
       const Scan(),
-      ProfilePage(),
+      const ProfilePage(),
     ];
 
     // ****************** SCREEN RENDERER ************************ /
@@ -39,10 +38,11 @@ class HomePage extends GetView<HomeController> {
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: List.generate(
-            bottomBarPages.length, (index) => bottomBarPages[index]),
+          bottomBarPages.length,
+          (index) => bottomBarPages[index],
+        ),
       ),
-      resizeToAvoidBottomInset: false,
-      extendBody: false,
+      extendBody: true,
       bottomNavigationBar: (bottomBarPages.length <= maxCount)
           ? AnimatedNotchBottomBar(
               notchBottomBarController: _controller,
