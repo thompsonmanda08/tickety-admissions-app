@@ -29,7 +29,7 @@ class HomePage extends GetView<HomeController> {
         navigateTo: navigateTo,
       ),
       const Scan(),
-      ProfilePage(),
+      const ProfilePage(),
     ];
 
     // ****************** SCREEN RENDERER ************************ /
@@ -38,10 +38,11 @@ class HomePage extends GetView<HomeController> {
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: List.generate(
-            bottomBarPages.length, (index) => bottomBarPages[index]),
+          bottomBarPages.length,
+          (index) => bottomBarPages[index],
+        ),
       ),
-      resizeToAvoidBottomInset: false,
-      extendBody: false,
+      extendBody: true,
       bottomNavigationBar: (bottomBarPages.length <= maxCount)
           ? AnimatedNotchBottomBar(
               notchBottomBarController: _controller,
