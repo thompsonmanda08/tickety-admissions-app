@@ -26,9 +26,9 @@ class AdmissionServices extends AuthenticatedService {
   }
 
   Future<APIServiceResponse<Map<String, dynamic>>> ticketAdmission({
-    required int eventID,
-    required int ticketID,
-    required int ticketNo,
+    required String eventID,
+    required String ticketID,
+    required String ticketNo,
     required String signature,
   }) async {
     Response<dynamic> r = await post(

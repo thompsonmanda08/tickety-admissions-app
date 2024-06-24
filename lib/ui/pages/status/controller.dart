@@ -95,10 +95,10 @@ class StatusPageController extends GetxController {
     try {
       APIServiceResponse<Map<String, dynamic>> response =
           await _admissionServices.ticketAdmission(
-        eventID: ticketDetails['eventID'],
-        ticketID: ticketDetails['ticketID'],
-        ticketNo: ticketDetails['ticketNo'],
-        signature: ticketDetails['signature'],
+        eventID: ticketDetails['eventID'].toString(),
+        ticketID: ticketDetails['ticketID'].toString(),
+        ticketNo: ticketDetails['ticketNo'].toString(),
+        signature: ticketDetails['signature'].toString(),
       );
       if (response.statusText == "success") {
         showSnackBar(
@@ -109,7 +109,7 @@ class StatusPageController extends GetxController {
       } else {
         showAlertBox(
           type: 'error',
-          title: 'Error',
+          title: 'Server Error',
           message: '${response.message}',
         );
       }
@@ -117,7 +117,7 @@ class StatusPageController extends GetxController {
       showAlertBox(
         type: 'error',
         title: 'Error',
-        message: 'Oops! Something went wrong',
+        message: 'Oops! Something went wrong $e',
       );
     } finally {
       isLoading.value = false;
