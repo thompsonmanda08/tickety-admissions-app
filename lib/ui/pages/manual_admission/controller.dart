@@ -52,8 +52,6 @@ class ManualAdmissionController extends GetxController {
         eventId: session.event["eventID"],
       );
       ticketDetails.value = response.data ?? {};
-      createLog('EVENT ID: ${session.event["eventID"]}');
-      createLog('RES Ticket Details: ${response.data}');
       if (response.statusText == "success") {
         reset();
         Get.toNamed('/status', arguments: response.data);
