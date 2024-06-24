@@ -10,7 +10,7 @@ import 'package:tickety_admission/ui/widgets/text_input_form_field.dart';
 class ManualAdmissionPage extends GetView<ManualAdmissionController> {
   const ManualAdmissionPage({super.key});
   bool fieldsFilledAndValid() {
-    if (controller.ticketNumber.value.isNotEmpty) {
+    if (controller.ticketNumber.value.isEmpty) {
       return false;
     }
     return true;
@@ -38,32 +38,32 @@ class ManualAdmissionPage extends GetView<ManualAdmissionController> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(25.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomTextInputField(
-                          textInputType: TextInputType.number,
-                          inputFieldName: "ticket_number",
-                          labelText: "Ticket Number",
-                          handleOnChanged: (value) {
-                            controller.ticketNumber.value = value;
-                          },
-                        ),
-                        const SizedBox(height: 20.0),
-                        Obx(() {
-                          bool isValid = fieldsFilledAndValid();
-                          return CustomButton(
+                    child: Obx(() {
+                      bool isValid = fieldsFilledAndValid();
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomTextInputField(
+                            textInputType: TextInputType.number,
+                            inputFieldName: "ticket_number",
+                            labelText: "Ticket Number",
+                            handleOnChanged: (value) {
+                              controller.ticketNumber.value = value;
+                            },
+                          ),
+                          const SizedBox(height: 20.0),
+                          CustomButton(
                             isDisabled: controller.isLoading.value
                                 ? controller.isLoading.value
-                                : isValid,
+                                : !isValid,
                             text: 'Validate',
                             isLoading: controller.isLoading.value,
                             handleOnClick: () =>
                                 controller.validateTicketNumber(),
-                          );
-                        }),
-                      ],
-                    ),
+                          )
+                        ],
+                      );
+                    }),
                   ),
                 ],
               ),
