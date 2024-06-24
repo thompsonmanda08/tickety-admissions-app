@@ -4,17 +4,16 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:tickety_admission/values/colors.dart';
 
-
 class CustomDropDownField extends StatelessWidget {
   CustomDropDownField({
-    Key? key,
+    super.key,
     this.id = "drop_down",
     required this.dropDownItems,
     required this.selectedItem,
     this.onChanged,
     this.height = 60,
     this.width,
-  }) : super(key: key);
+  });
 
   final String? id;
   final List<String> dropDownItems;

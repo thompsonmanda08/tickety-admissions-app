@@ -8,7 +8,4 @@ class HomeController extends GetxController {
   ProfileController profile = Get.find<ProfileController>();
   final StatusPageController statusController =
       Get.find<StatusPageController>();
-  var merchantId = ''.obs;
-  var merchantPhone = ''.obs;
-  var merchantName = ''.obs;
 }

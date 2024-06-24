@@ -15,20 +15,23 @@ class StatusPage extends GetView<StatusPageController> {
     return FutureBuilder<Map<String, dynamic>>(
       future: controller.validateTicketSignature(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          // * LOADING INDICATOR - WHILE FETCHING TICKET DETAILS.
+        if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.data == null) {
+            // * NO TICKET FOUND - DISPLAY ERROR MESSAGE!
+            return NoTicketDataFound(
+              message:
+                  "${snapshot.data!["message"] ?? snapshot.data!["validationMessage"]}",
+            );
+          } else {
+            // * DISPLAY TICKET DETAILS!
+            return const TicketDetailsScreen();
+          }
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          // * ERROR FETCHING DATA PROMPT USER TO RELOAD!
           return const ValidatingScreen();
-        } else if (snapshot.data!["data"] == null) {
-          // * ****************************
-          return NoTicketDataFound(
-            message: snapshot.data!["message"],
-          );
-        } else if (snapshot.hasError) {
+        } else {
           // * ERROR FETCHING DATA PROMPT USER TO RELOAD!
           return const ErrorScreen();
-        } else {
-          // * DISPLAY TICKET DETAILS!
-          return const TicketDetailsScreen();
         }
       },
     );

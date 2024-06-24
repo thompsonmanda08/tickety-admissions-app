@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:tickety_admission/ui/widgets/back_button.dart';
 import 'package:tickety_admission/values/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSize {
+
   const CustomAppBar({
     super.key,
     this.leading,
@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
     return SafeArea(
         child: Container(
       color: background ?? kPrimaryColor,
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

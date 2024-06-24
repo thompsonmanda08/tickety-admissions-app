@@ -8,18 +8,22 @@ class SettingsIcon extends StatelessWidget {
     super.key,
     this.color = Colors.white,
     this.onTap,
+    this.width = 28,
+    this.icon = "logo-icon",
   });
 
   final Color color;
+  final String icon;
+  final double width;
   final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
+      constraints: const BoxConstraints(maxHeight: 60),
       padding: const EdgeInsets.all(2),
       decoration: const BoxDecoration(
-        // border: Border.all(width: 2, color: neutralColor100.withOpacity(0.25)),
         borderRadius: BorderRadius.all(Radius.circular(50)),
       ),
       child: AspectRatio(
@@ -36,7 +40,8 @@ class SettingsIcon extends StatelessWidget {
               minRadius: 24,
               maxRadius: 24,
               child: SvgPicture.asset(
-                'assets/icons/settingsIcon.svg',
+                'assets/icons/$icon.svg',
+                width: width,
                 colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
               ),
             ),

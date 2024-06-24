@@ -125,8 +125,5 @@ class StatusPageController extends GetxController {
     }
   }
 
-  @override
-  void onInit() async {
-    super.onInit();
-  }
+  
 }

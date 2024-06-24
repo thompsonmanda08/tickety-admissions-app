@@ -4,7 +4,7 @@ import 'package:tickety_admission/values/colors.dart';
 class Search extends StatelessWidget {
   final ValueChanged<String> onSearch;
 
-  const Search({Key? key, required this.onSearch}) : super(key: key);
+  const Search({super.key, required this.onSearch});
 
   @override
   Widget build(BuildContext context) {

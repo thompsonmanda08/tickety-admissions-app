@@ -28,10 +28,10 @@ class HomeIndex extends GetView<HomeController> {
           firstName: controller.session.firstName,
           lastName: controller.session.lastName,
         ),
-        title: "Tickety Admin",
         titleWidget: Center(
           child: Container(
             // color: Colors.red,
+            constraints: const BoxConstraints(maxHeight: 50),
             padding: const EdgeInsets.only(left: 16, right: 16, top: 4),
             width: double.maxFinite,
             child: Column(

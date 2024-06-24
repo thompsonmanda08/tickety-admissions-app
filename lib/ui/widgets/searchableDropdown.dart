@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:searchfield/searchfield.dart';
 import 'package:tickety_admission/values/colors.dart';
