@@ -54,7 +54,8 @@ class _ScanState extends State<Scan> {
           ),
         ),
         trailing: SettingsIcon(
-          onTap: () => Get.toNamed("/events"),
+          icon: "changeIcon",
+          onTap: () => Get.offAllNamed("/events"),
         ),
       ),
       body: Stack(

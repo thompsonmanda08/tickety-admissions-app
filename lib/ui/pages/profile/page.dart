@@ -31,7 +31,8 @@ class ProfilePage extends GetView<ProfileController> {
           ),
         ),
         trailing: SettingsIcon(
-          onTap: () => Get.toNamed("/events"),
+          icon: "changeIcon",
+          onTap: () => Get.offAllNamed("/events"),
         ),
       ),
       body: GestureDetector(
