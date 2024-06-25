@@ -102,7 +102,8 @@ class StatusPageController extends GetxController {
         signature: ticketDetails['signature'].toString(),
       );
       if (response.statusText == "success") {
-        showSnackBar(
+        await showAlertBox(
+          type: "success",
           title: 'Success',
           message: '${response.message}',
         );
@@ -124,6 +125,4 @@ class StatusPageController extends GetxController {
       isLoading.value = false;
     }
   }
-
-  
 }
