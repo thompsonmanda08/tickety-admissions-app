@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:tickety_admission/ui/widgets/appbar.dart';
+import 'package:tickety_admission/ui/widgets/avatar.dart';
+import 'package:tickety_admission/ui/widgets/back_button.dart';
 import 'package:tickety_admission/ui/widgets/button_2.dart';
+import 'package:tickety_admission/ui/widgets/settings_icon.dart';
 import 'package:tickety_admission/values/colors.dart';
 
 class NoTicketDataFound extends StatelessWidget {
@@ -14,6 +18,23 @@ class NoTicketDataFound extends StatelessWidget {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kPrimaryColor,
+      appBar: CustomAppBar(
+        leading: CustomBackButton(
+          onBackClick: () => Get.offNamed("/home"),
+        ),
+        trailing: GestureDetector(
+          onTap: () => Get.offAllNamed("/events"),
+          child: const Text(
+            "Change Event",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              color: neutralColor100,
+              height: 2,
+            ),
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Container(

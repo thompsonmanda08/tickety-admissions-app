@@ -45,17 +45,20 @@ class StatusPageController extends GetxController {
       } else {
         isValidTicket.value = false;
         ticketInvalidMessage.value = "${serviceResponse.message}";
-
-        return {
+        var error = {
           "message": "${serviceResponse.message}",
-          "isValidTicket": false
+          "data": null,
+          "error": true,
         };
+        return error;
       }
     } catch (e) {
-      return {
-        "message": e.toString(),
-        "isValidTicket": false,
+      var error = {
+        "message": "Sorry! There was an error!",
+        "data": null,
+        "error": true,
       };
+      return error;
     }
   }
 

@@ -71,7 +71,7 @@ class EventsPage extends GetView<EventsController> {
               await controller.getEvents();
             },
             child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
+              // physics: const BouncingScrollPhysics(),
               child: Container(
                 color: Colors.white,
                 constraints: BoxConstraints(minHeight: screenSize.height * 0.9),

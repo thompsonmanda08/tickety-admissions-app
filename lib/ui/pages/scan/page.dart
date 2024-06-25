@@ -100,6 +100,42 @@ class _ScanState extends State<Scan> {
 
   final StatusPageController statusController =
       Get.find<StatusPageController>();
+
+  final UserSessionService session = Get.find<UserSessionService>();
+
+  String updateUrlParams(String url,
+      {String? event, String? tkt, String? signature}) {
+    List<String> params = url.split('&');
+    Map<String, String> paramMap = {};
+
+    // Populate the map with existing key-value pairs
+    for (String param in params) {
+      List<String> keyValue = param.split('=');
+      if (keyValue.length == 2) {
+        paramMap[keyValue[0]] = keyValue[1];
+      }
+    }
+
+    // Update the values if new values are provided
+    if (event != null) {
+      paramMap['?event'] = event;
+    }
+    if (tkt != null) {
+      paramMap['tkt'] = tkt;
+    }
+    if (signature != null) {
+      paramMap['signature'] = signature;
+    }
+
+    // Construct the updated URL
+    List<String> updatedParams = [];
+    paramMap.forEach((key, value) {
+      updatedParams.add('$key=$value');
+    });
+
+    return updatedParams.join('&');
+  }
+
   void _onQRViewCreated(QRViewController controller) {
     //
     setState(() {
@@ -109,9 +145,11 @@ class _ScanState extends State<Scan> {
       setState(() {
         result = scanData;
         if (result != null) {
-          // final scannedData = result!.code;
-          // print("[ BGS TICKETY QR ] $scannedData");
           statusController.urlQuery.value = result!.code!;
+          statusController.urlQuery.value = updateUrlParams(result!.code!,
+              event: "${session.event["eventID"]}");
+
+          print("UPDATED URL ${statusController.urlQuery.value}");
           Get.toNamed('/status');
         } else {
           showSnackBar(

@@ -60,6 +60,14 @@ class HomeIndex extends GetView<HomeController> {
         ),
         trailing: SettingsIcon(
           onTap: () => Get.toNamed("/events"),
+          child: const Text(
+            "Change Event",
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+              color: neutralColor100,
+            ),
+          ),
         ),
       ),
       body: SafeArea(

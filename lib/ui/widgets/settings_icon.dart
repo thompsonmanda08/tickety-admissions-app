@@ -8,6 +8,7 @@ class SettingsIcon extends StatelessWidget {
     super.key,
     this.color = Colors.white,
     this.onTap,
+    this.child,
     this.width = 28,
     this.icon = "logo-icon",
   });
@@ -15,6 +16,7 @@ class SettingsIcon extends StatelessWidget {
   final Color color;
   final String icon;
   final double width;
+  final Widget? child;
   final void Function()? onTap;
 
   @override
@@ -39,11 +41,12 @@ class SettingsIcon extends StatelessWidget {
               backgroundColor: neutralColor900.withOpacity(0.1),
               minRadius: 24,
               maxRadius: 24,
-              child: SvgPicture.asset(
-                'assets/icons/$icon.svg',
-                width: width,
-                colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
-              ),
+              child: child ??
+                  SvgPicture.asset(
+                    'assets/icons/$icon.svg',
+                    width: width,
+                    colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+                  ),
             ),
           ),
         ),
