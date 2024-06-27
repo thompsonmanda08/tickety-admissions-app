@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:tickety_admission/tools/helpers.dart';
 import 'package:tickety_admission/ui/pages/login/controller.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';
+import 'package:tickety_admission/ui/widgets/button_2.dart';
 import 'package:tickety_admission/ui/widgets/main_header.dart';
 import 'package:tickety_admission/ui/widgets/text_input_form_field.dart';
 import 'package:tickety_admission/values/colors.dart';
@@ -76,11 +77,12 @@ class LoginPage extends GetView<LoginController> {
                                 const SizedBox(height: 20.0),
                                 Obx(() {
                                   bool isValid = fieldsFilledAndValid();
-                                  return CustomButton(
+                                  return Button(
                                     isDisabled: isValid,
+                                    // borderRadius: 24,
                                     text: 'Login',
                                     isLoading: controller.isLoading.value,
-                                    handleOnClick: () {
+                                    onTap: () {
                                       controller.handleLogin();
                                       // Get.toNamed("/home");
                                     },

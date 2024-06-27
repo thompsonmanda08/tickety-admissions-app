@@ -54,9 +54,8 @@ class HomePage extends GetView<HomeController> {
               kBottomRadius: 28.0,
               notchColor: kPrimaryColor,
               removeMargins: false,
-              bottomBarWidth: 500,
               showShadow: false,
-              durationInMilliSeconds: 300,
+              durationInMilliSeconds: 200,
               elevation: 1,
               bottomBarItems: [
                 BottomBarItem(

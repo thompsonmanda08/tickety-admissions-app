@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tickety_admission/ui/widgets/loader.dart';
+import 'package:tickety_admission/values/colors.dart';
 
 class Button extends StatelessWidget {
   const Button({
@@ -13,6 +15,8 @@ class Button extends StatelessWidget {
     this.borderRadius,
     this.fontColor,
     this.linearGradient = false,
+    this.isDisabled = false,
+    this.isLoading = false,
     this.height,
     this.boxDecoration,
     this.textStyle,
@@ -20,7 +24,7 @@ class Button extends StatelessWidget {
     this.elevation,
     this.endColor,
     this.beginColor,
-    this.backgroundColor,
+    this.backgroundColor = kPrimaryColor,
     this.shadowColor,
     this.boxShadowColor,
   });
@@ -37,7 +41,7 @@ class Button extends StatelessWidget {
       boxShadowColor,
       fontColor;
   final FontWeight? fontWeight;
-  final bool linearGradient;
+  final bool linearGradient, isDisabled, isLoading;
   final BoxDecoration? boxDecoration;
   final TextStyle? textStyle;
   final Widget? child;
@@ -66,36 +70,52 @@ class Button extends StatelessWidget {
                   )
                 : null,
             color: color,
-            borderRadius: BorderRadius.circular(borderRadius ?? 16),
+            borderRadius: BorderRadius.circular(borderRadius ?? 14),
           ),
       child: ElevatedButton(
-        onPressed: onTap,
+        onPressed: isDisabled ? () => {} : onTap,
         style: ButtonStyle(
           shadowColor:
               WidgetStateProperty.all(shadowColor ?? Colors.transparent),
           splashFactory: InkRipple.splashFactory,
-          backgroundColor:
-              WidgetStateProperty.all(backgroundColor ?? Colors.white),
+          backgroundColor: WidgetStateProperty.all(
+              isDisabled ? neutralColor400 : backgroundColor ?? Colors.white),
           elevation: WidgetStateProperty.all<double>(elevation ?? 0),
           shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               side: BorderSide(color: borderColor ?? Colors.transparent),
               borderRadius: BorderRadius.circular(
-                borderRadius ?? 10,
+                borderRadius ?? 14,
               ),
             ),
           ),
         ),
         child: child ??
-            Text(
-              text,
-              style: textStyle ??
-                  TextStyle(
-                    color: fontColor ?? Colors.white,
-                    fontSize: fontSize ?? 16,
-                    fontWeight: fontWeight ?? FontWeight.w500,
-                  ),
+            Center(
+              child: isLoading
+                  ? LoadingState(
+                      isWhite: backgroundColor == kPrimaryColor,
+                    )
+                  : Text(
+                      text,
+                      style: TextStyle(
+                        color: isDisabled
+                            ? Colors.white
+                            : fontColor ?? Colors.white,
+                        fontSize: fontSize ?? 18,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
             ),
+        // Text(
+        //   text,
+        //   style: textStyle ??
+        //       TextStyle(
+        //         color: fontColor ?? Colors.white,
+        //         fontSize: fontSize ?? 16,
+        //         fontWeight: fontWeight ?? FontWeight.w500,
+        //       ),
+        // ),
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:tickety_admission/ui/pages/events/controller.dart';
 import 'package:tickety_admission/ui/widgets/appbar.dart';
 import 'package:tickety_admission/ui/widgets/avatar.dart';
 import 'package:tickety_admission/ui/widgets/button.dart';
+import 'package:tickety_admission/ui/widgets/button_2.dart';
 import 'package:tickety_admission/ui/widgets/main_header.dart';
 import 'package:tickety_admission/ui/widgets/searchableDropdown.dart';
 import 'package:tickety_admission/values/colors.dart';
@@ -26,6 +27,7 @@ class EventsPage extends GetView<EventsController> {
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
+          resizeToAvoidBottomInset: true,
           backgroundColor: kPrimaryColor,
           appBar: CustomAppBar(
             leading: Avatar(
@@ -83,7 +85,11 @@ class EventsPage extends GetView<EventsController> {
                           "Choose an event to manage, you can change events at any time",
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(24.0),
+                      padding: EdgeInsets.only(
+                          left: 24.0,
+                          right: 24,
+                          top: 24,
+                          bottom: MediaQuery.of(context).viewInsets.bottom * 2),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -116,12 +122,11 @@ class EventsPage extends GetView<EventsController> {
                           Obx(
                             () {
                               bool isValid = fieldsFilledAndValid();
-                              return CustomButton(
+                              return Button(
                                 isDisabled: isValid,
                                 text: 'Continue',
                                 isLoading: controller.isLoading.value,
-                                handleOnClick:
-                                    controller.handleChangeSessionEvent,
+                                onTap: controller.handleChangeSessionEvent,
                               );
                             },
                           ),
